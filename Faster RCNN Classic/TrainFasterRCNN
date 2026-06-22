@@ -1,0 +1,462 @@
+clear; clc; close all;
+
+%% ============================================================
+%% KONFIGURASI
+%% ============================================================
+datasetFolder  = 'D:\Fatur2026\dataset\images_aug';
+annotationFile = 'D:\Fatur2026\dataset\annotations_aug.xml';
+
+% ★ Folder output resize BARU (480x480) — jangan timpa folder 224 lama ★
+resizedFolder  = 'D:\Fatur2026\dataset\images_aug_480';
+
+frameNameFormat = 'frame_%06d';
+frameExtension  = '.png';
+
+ORIG_W = 956;
+ORIG_H = 720;
+
+% [PERBAIKAN 1] Input size dinaikkan ke 480x480
+TARGET_SIZE = [480 480];   % [H W]
+
+%% ============================================================
+%% 1. Baca Anotasi
+%% ============================================================
+fprintf('Membaca file anotasi: %s\n', annotationFile);
+if ~isfile(annotationFile)
+    error('File anotasi tidak ditemukan: %s', annotationFile);
+end
+
+frameAnnotations = readAnnotationsAug(annotationFile, ORIG_W, ORIG_H);
+nAnnotatedFrames = sum(arrayfun(@(s) ~isempty(s.labels), frameAnnotations));
+fprintf('Frame dengan anotasi: %d\n\n', nAnnotatedFrames);
+
+%% ============================================================
+%% 2. Bangun Dataset dengan Resize ke 480x480
+%% ============================================================
+if ~exist(resizedFolder, 'dir')
+    mkdir(resizedFolder);
+    fprintf('Folder resized dibuat: %s\n', resizedFolder);
+end
+
+fprintf('Membangun dataset (resize + letterbox ke %dx%d)...\n', TARGET_SIZE(2), TARGET_SIZE(1));
+
+imageFilenames = {};
+bboxes         = {};
+labels         = {};
+validCount     = 0;
+
+for fIdx = 1 : length(frameAnnotations)
+    if isempty(frameAnnotations(fIdx).bboxes), continue; end
+
+    if isfield(frameAnnotations,'filename') && ~isempty(frameAnnotations(fIdx).filename)
+        imgPath = fullfile(datasetFolder, frameAnnotations(fIdx).filename);
+    else
+        frameNum = fIdx - 1;
+        imgPath  = fullfile(datasetFolder, sprintf('%s%s', sprintf(frameNameFormat,frameNum), frameExtension));
+        if ~isfile(imgPath)
+            imgPath2 = fullfile(datasetFolder, sprintf('frame%06d%s', frameNum, frameExtension));
+            if isfile(imgPath2), imgPath = imgPath2; else, continue; end
+        end
+    end
+    if ~isfile(imgPath), continue; end
+
+    rawBboxes = frameAnnotations(fIdx).bboxes;
+    rawLabels = frameAnnotations(fIdx).labels;
+
+    [~, fn, ext] = fileparts(imgPath);
+    resizedPath  = fullfile(resizedFolder, [fn ext]);
+
+    try
+        img = imread(imgPath);
+        if size(img,3)==1, img = repmat(img,[1 1 3]); end
+        if size(img,3)==4, img = img(:,:,1:3); end
+        [imgResized, bboxScaled] = resizeWithPadding(img, rawBboxes, TARGET_SIZE, ORIG_W, ORIG_H);
+    catch ME
+        fprintf('  Gagal baca %s: %s\n', [fn ext], ME.message);
+        continue;
+    end
+
+    if isempty(bboxScaled), continue; end
+
+    if ~isfile(resizedPath)
+        try
+            imwrite(imgResized, resizedPath);
+        catch ME
+            fprintf('  Gagal simpan %s: %s\n', [fn ext], ME.message);
+            continue;
+        end
+    end
+
+    validCount = validCount + 1;
+    imageFilenames{validCount} = resizedPath;
+    bboxes{validCount}         = bboxScaled;
+    nBox = size(bboxScaled,1);
+    labels{validCount}         = rawLabels(1:nBox)';
+
+    if mod(validCount, 200) == 0
+        fprintf('  Progress: %d frame diproses...\n', validCount);
+    end
+end
+
+fprintf('\nTotal gambar valid: %d\n', validCount);
+if validCount == 0
+    error('Tidak ada gambar valid! Periksa path:\n  datasetFolder = %s', datasetFolder);
+end
+
+%% ============================================================
+%% 3. Class Names
+%% ============================================================
+allLabelsList = vertcat(labels{:});
+classNames    = unique(allLabelsList(:));
+numClasses    = length(classNames);
+fprintf('Jumlah kelas : %d\n', numClasses);
+fprintf('Classes      : %s\n\n', strjoin(classNames, ', '));
+
+%% ============================================================
+%% 4. Bangun Ground Truth Table
+%% ============================================================
+fprintf('Membangun ground truth table...\n');
+
+colData = cell(validCount, numClasses);
+for i = 1:validCount
+    for c = 1:numClasses, colData{i,c} = zeros(0,4); end
+end
+
+for i = 1:validCount
+    bb = bboxes{i}; lbl = labels{i};
+    for k = 1:length(lbl)
+        cIdx = find(strcmp(classNames, lbl{k}), 1);
+        if ~isempty(cIdx)
+            colData{i,cIdx} = [colData{i,cIdx}; double(bb(k,:))];
+        end
+    end
+end
+
+% Sanitasi baris
+keepRow = true(validCount,1);
+for i = 1:validCount
+    totalBoxes = 0;
+    for c = 1:numClasses
+        bb = colData{i,c};
+        if ~isempty(bb)
+            if size(bb,2)~=4 || any(~isfinite(bb(:))) || any(bb(:,3)<=0) || any(bb(:,4)<=0)
+                keepRow(i) = false; break;
+            end
+            totalBoxes = totalBoxes + size(bb,1);
+        end
+    end
+    if totalBoxes == 0, keepRow(i) = false; end
+end
+
+fprintf('  Dibuang %d baris tidak valid\n', sum(~keepRow));
+imgFileCol = imageFilenames(keepRow)';
+colData    = colData(keepRow,:);
+nValid     = sum(keepRow);
+fprintf('  Baris valid: %d\n\n', nValid);
+if nValid == 0, error('Tidak ada data valid setelah sanitasi!'); end
+
+gTruth = table(imgFileCol, 'VariableNames', {'imageFilename'});
+for c = 1:numClasses
+    gTruth.(classNames{c}) = colData(:,c);
+end
+
+%% ============================================================
+%% 5. Split 80% Train / 20% Validasi
+%% ============================================================
+rng(42);
+idx      = randperm(height(gTruth));
+numTrain = round(0.8 * height(gTruth));
+
+trainingTable   = gTruth(idx(1:numTrain), :);
+validationTable = gTruth(idx(numTrain+1:end), :);
+
+fprintf('Training  : %d gambar\n', height(trainingTable));
+fprintf('Validasi  : %d gambar\n\n', height(validationTable));
+
+%% ============================================================
+%% 6. Buat Training + Validation DATASTORE
+%%    trainFasterRCNNObjectDetector mensyaratkan:
+%%    jika ValidationData diisi, maka training data juga HARUS
+%%    berupa datastore (bukan table) → keduanya dikonversi di sini
+%% ============================================================
+fprintf('Membuat training & validation datastore...\n');
+
+% --- Training datastore ---
+trainImgDS   = imageDatastore(trainingTable.imageFilename);
+trainLabelDS = boxLabelDatastore(trainingTable(:, classNames));
+trainDS      = combine(trainImgDS, trainLabelDS);
+
+% --- Validation datastore ---
+valImgDS   = imageDatastore(validationTable.imageFilename);
+valLabelDS = boxLabelDatastore(validationTable(:, classNames));
+valDS      = combine(valImgDS, valLabelDS);
+
+fprintf('Training datastore  : %d sampel\n', height(trainingTable));
+fprintf('Validation datastore: %d sampel\n\n', height(validationTable));
+
+% Simpan tabel validasi untuk evaluasi post-training
+validationData = validationTable;
+
+%% ============================================================
+%% 7. Faster R-CNN Network
+%% ============================================================
+fprintf('==============================================\n');
+fprintf('MEMBUAT FASTER R-CNN NETWORK\n');
+fprintf('==============================================\n\n');
+
+net       = resnet50;
+inputSize = [TARGET_SIZE, 3];
+
+% [PERBAIKAN 3] Anchor box disesuaikan distribusi bbox aktual
+% Rata-rata bbox setelah resize 480x480:
+%   25px * (480/224) ≈ 54px width,  22px * (480/224) ≈ 47px height
+% Distribusi: cluster 20-75px, ekor hingga ~210px
+anchorBoxes = [
+    % Small (sesuai cluster kecil ~20-35px di 224 → ~43-75px di 480)
+    24,  20;
+    32,  26;
+    42,  36;
+
+    % Medium (mayoritas data ~35-55px di 224 → ~75-118px di 480)
+    54,  46;
+    64,  54;
+    75,  62;
+
+    % Landscape variants (W > H, sesuai distribusi scatter)
+    80,  45;
+    96,  52;
+    112, 60;
+
+    % Large (ekor distribusi)
+    128, 80;
+    160, 100;
+    200, 120;
+];
+
+featureLayers = {
+    'activation_40_relu', ...
+    'res5c_relu', ...
+    'activation_39_relu', ...
+    'res5a_relu', ...
+    'activation_22_relu'
+};
+
+lgraph           = [];
+success          = false;
+usedFeatureLayer = '';
+
+for k = 1:length(featureLayers)
+    featureLayer = featureLayers{k};
+    fprintf('Percobaan feature layer "%s"... ', featureLayer);
+    try
+        lgraph_temp = fasterRCNNLayers(inputSize, numClasses, anchorBoxes, net, featureLayer);
+        lyrs = lgraph_temp.Layers;
+        classOK = false; bboxOK = false;
+        for i = 1:length(lyrs)
+            ln = lyrs(i).Name;
+            if contains(ln,'Classification') && isa(lyrs(i),'nnet.cnn.layer.ClassificationOutputLayer')
+                classOK = true;
+            end
+            if contains(ln,'Deltas') || contains(ln,'bbox') || contains(ln,'regression')
+                bboxOK = true;
+            end
+        end
+        if classOK && bboxOK
+            lgraph = lgraph_temp; usedFeatureLayer = featureLayer;
+            fprintf('OK\n\n'); success = true; break;
+        else
+            fprintf('Layer tidak lengkap\n');
+        end
+    catch ME
+        fprintf('Error: %s\n', ME.message);
+    end
+end
+
+if ~success
+    fprintf('\n[ERROR] Semua percobaan pembuatan network gagal!\n');
+    return;
+end
+
+%% ============================================================
+%% 8. [PERBAIKAN 4] Training Options yang Lebih Baik
+%% ============================================================
+options = trainingOptions('sgdm', ...
+    'MaxEpochs',              50, ...        % dinaikkan dari 30
+    'MiniBatchSize',          2, ...         % diturunkan dari 3 (input lebih besar)
+    'InitialLearnRate',       1e-3, ...
+    'LearnRateSchedule',      'piecewise', ...
+    'LearnRateDropFactor',    0.1, ...
+    'LearnRateDropPeriod',    15, ...        % dinaikkan dari 5 (tidak terlalu agresif)
+    'Shuffle',                'every-epoch', ...
+    'ValidationData',         valDS, ...    % [PERBAIKAN 2] validasi yang benar
+    'ValidationFrequency',    50, ...       % cek setiap 50 iterasi
+    'OutputNetwork',          'best-validation-loss', ... % [PERBAIKAN 5] simpan bobot terbaik
+    'Verbose',                true, ...
+    'VerboseFrequency',       10, ...
+    'Plots',                  'training-progress', ...
+    'ExecutionEnvironment',   'auto');
+
+%% ============================================================
+%% 9. Training
+%% ============================================================
+fprintf('==============================================\n');
+fprintf('MEMULAI TRAINING FASTER R-CNN v2\n');
+fprintf('==============================================\n');
+fprintf('Backbone       : ResNet-50\n');
+fprintf('Feature Layer  : %s\n', usedFeatureLayer);
+fprintf('Input Size     : %dx%d (letterbox dari %dx%d)\n', TARGET_SIZE(2), TARGET_SIZE(1), ORIG_W, ORIG_H);
+fprintf('Classes (%d)   : %s\n', numClasses, strjoin(classNames, ', '));
+fprintf('Train / Val    : %d / %d gambar\n', height(trainingTable), height(validationTable));
+fprintf('Epochs         : %d  |  LR drop: tiap %d epoch\n', options.MaxEpochs, options.LearnRateDropPeriod);
+fprintf('Output bobot   : best-validation-loss\n');
+fprintf('==============================================\n\n');
+
+tic;
+try
+    [detector, info] = trainFasterRCNNObjectDetector( ...
+        trainDS, lgraph, options, ...
+        'NegativeOverlapRange', [0, 0.3], ...
+        'PositiveOverlapRange', [0.6, 1]);
+
+    trainingTime = toc;
+    fprintf('\nTraining selesai dalam %.2f menit\n', trainingTime/60);
+    fprintf('Final Loss: %.4f\n\n', info.TrainingLoss(end));
+
+catch ME
+    fprintf('\nTRAINING GAGAL: %s\n', ME.message);
+    fprintf('Tip: Jika error memory, coba turunkan MiniBatchSize ke 1\n');
+    return;
+end
+
+%% ============================================================
+%% 10. Simpan Model
+%% ============================================================
+modelFilename = sprintf('FasterRCNN_ResNet50_v2_%s.mat', datestr(now,'yyyymmdd_HHMMSS'));
+save(modelFilename, 'detector','classNames','anchorBoxes','info','TARGET_SIZE','ORIG_W','ORIG_H');
+fprintf('Model tersimpan: %s\n\n', modelFilename);
+
+%% ============================================================
+%% 11. Visualisasi Hasil Deteksi
+%% ============================================================
+numTest = min(6, height(validationData));
+testIdx = randperm(height(validationData), numTest);
+
+figure('Name','Detection Results v2','Position',[50 50 1400 700]);
+for i = 1:numTest
+    imgRaw = imread(validationData.imageFilename{testIdx(i)});
+    if size(imgRaw,3)==1, imgRaw = repmat(imgRaw,[1 1 3]); end
+
+    [imgInput, ~] = resizeWithPadding(imgRaw, [], TARGET_SIZE, ORIG_W, ORIG_H);
+    [bboxes_det, scores, labels_det] = detect(detector, imgInput, 'Threshold', 0.5);
+
+    subplot(2,3,i);
+    if ~isempty(bboxes_det)
+        annStr = arrayfun(@(k) sprintf('%s %.0f%%', char(labels_det(k)), scores(k)*100), ...
+                          1:length(labels_det), 'UniformOutput', false);
+        detImg = insertObjectAnnotation(imgInput,'rectangle',bboxes_det,annStr, ...
+                                        'LineWidth',2,'FontSize',9);
+        imshow(detImg);
+        title(sprintf('%d objek terdeteksi', length(labels_det)));
+    else
+        imshow(imgInput);
+        title('Tidak ada deteksi');
+    end
+end
+sgtitle('Hasil Deteksi v2 – Validation Set (480x480)');
+
+fprintf('\nSELESAI\n');
+
+%% ============================================================
+%% LOCAL FUNCTIONS
+%% ============================================================
+
+function frameAnnotations = readAnnotationsAug(annotationFile, ORIG_W, ORIG_H)
+    xmlData = xmlread(annotationFile);
+    frameAnnotations = struct('bboxes',{},'labels',{},'filename',{});
+    trackNodes = xmlData.getElementsByTagName('track');
+
+    if trackNodes.getLength > 0
+        fprintf('Format XML: <track><box> (CVAT asli)\n');
+        for t = 0 : trackNodes.getLength - 1
+            track      = trackNodes.item(t);
+            trackLabel = strtrim(char(track.getAttribute('label')));
+            boxNodes   = track.getElementsByTagName('box');
+            for b = 0 : boxNodes.getLength - 1
+                box = boxNodes.item(b);
+                if str2double(char(box.getAttribute('outside'))) == 1, continue; end
+                frameNum = str2double(char(box.getAttribute('frame')));
+                xtl = max(0,      str2double(char(box.getAttribute('xtl'))));
+                ytl = max(0,      str2double(char(box.getAttribute('ytl'))));
+                xbr = min(ORIG_W, str2double(char(box.getAttribute('xbr'))));
+                ybr = min(ORIG_H, str2double(char(box.getAttribute('ybr'))));
+                w = xbr-xtl; h = ybr-ytl;
+                if w<=0 || h<=0, continue; end
+                fIdx = frameNum+1;
+                if fIdx > length(frameAnnotations) || isempty(frameAnnotations(fIdx).bboxes)
+                    frameAnnotations(fIdx).bboxes   = zeros(0,4);
+                    frameAnnotations(fIdx).labels   = {};
+                    frameAnnotations(fIdx).filename = '';
+                end
+                frameAnnotations(fIdx).bboxes(end+1,:) = [xtl, ytl, w, h];
+                frameAnnotations(fIdx).labels{end+1}    = trackLabel;
+            end
+        end
+    else
+        fprintf('Format XML: <image><box> (augmentasi)\n');
+        imageNodes = xmlData.getElementsByTagName('image');
+        fprintf('Jumlah image nodes: %d\n', imageNodes.getLength);
+        for i = 0 : imageNodes.getLength - 1
+            imgNode  = imageNodes.item(i);
+            imgId    = str2double(char(imgNode.getAttribute('id')));
+            imgName  = strtrim(char(imgNode.getAttribute('name')));
+            boxNodes = imgNode.getElementsByTagName('box');
+            fIdx = imgId + 1;
+            if fIdx > length(frameAnnotations) || isempty(frameAnnotations(fIdx).bboxes)
+                frameAnnotations(fIdx).bboxes   = zeros(0,4);
+                frameAnnotations(fIdx).labels   = {};
+                frameAnnotations(fIdx).filename = imgName;
+            end
+            for b = 0 : boxNodes.getLength - 1
+                box = boxNodes.item(b);
+                lbl = strtrim(char(box.getAttribute('label')));
+                xtl = max(0,      str2double(char(box.getAttribute('xtl'))));
+                ytl = max(0,      str2double(char(box.getAttribute('ytl'))));
+                xbr = min(ORIG_W, str2double(char(box.getAttribute('xbr'))));
+                ybr = min(ORIG_H, str2double(char(box.getAttribute('ybr'))));
+                w = xbr-xtl; h = ybr-ytl;
+                if w<=0 || h<=0, continue; end
+                frameAnnotations(fIdx).bboxes(end+1,:) = [xtl, ytl, w, h];
+                frameAnnotations(fIdx).labels{end+1}    = lbl;
+            end
+        end
+    end
+end
+
+
+function [imgOut, bboxOut] = resizeWithPadding(img, bboxIn, targetSize, origW, origH)
+    tH = targetSize(1); tW = targetSize(2);
+    scale = min(tW/origW, tH/origH);
+    newW  = round(origW * scale);
+    newH  = round(origH * scale);
+    imgResized = imresize(img, [newH, newW]);
+    padTop  = floor((tH-newH)/2);
+    padLeft = floor((tW-newW)/2);
+    if size(img,3)==3
+        imgOut = uint8(zeros(tH, tW, 3));
+    else
+        imgOut = uint8(zeros(tH, tW));
+    end
+    imgOut(padTop+1:padTop+newH, padLeft+1:padLeft+newW, :) = imgResized;
+    if isempty(bboxIn), bboxOut = zeros(0,4); return; end
+    bboxOut      = bboxIn;
+    bboxOut(:,1) = bboxIn(:,1)*scale + padLeft;
+    bboxOut(:,2) = bboxIn(:,2)*scale + padTop;
+    bboxOut(:,3) = bboxIn(:,3)*scale;
+    bboxOut(:,4) = bboxIn(:,4)*scale;
+    bboxOut(:,1) = max(1, bboxOut(:,1));
+    bboxOut(:,2) = max(1, bboxOut(:,2));
+    bboxOut(:,3) = min(bboxOut(:,3), tW - bboxOut(:,1) + 1);
+    bboxOut(:,4) = min(bboxOut(:,4), tH - bboxOut(:,2) + 1);
+    valid   = bboxOut(:,3) >= 2 & bboxOut(:,4) >= 2;
+    bboxOut = bboxOut(valid,:);
+end
