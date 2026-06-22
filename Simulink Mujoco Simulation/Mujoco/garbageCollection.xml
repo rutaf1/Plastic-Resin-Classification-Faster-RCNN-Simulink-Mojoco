@@ -1,0 +1,1232 @@
+<mujoco model="garbageCollection">
+    <compiler meshdir="mesh/" texturedir="texture/"/>
+
+    <visual>
+        <rgba haze=".3 .3 .3 1"/>
+    </visual>
+
+    <asset>
+        <texture name="texplane" type="2d" builtin="checker"
+                 rgb1=".25 .25 .25" rgb2=".3 .3 .3"
+                 width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+        <material name="matplane" reflectance="0.3" texture="texplane"
+                  texrepeat="1 1" texuniform="true"/>
+
+        <!-- plastic 1 -->
+        <texture name="texPlastic1" type="2d" file="texPlastic1.png"/>
+        <material name="matPlastic1" texture="texPlastic1" rgba="1 1 1 0.4" specular="1" shininess="0.8"/>
+        <mesh name="meshPlastic1" file="meshPlastic1.obj" scale=".9 .9 .9"/>
+
+        <!-- plastic 2 -->
+        <texture name="texPlastic2" type="2d" file="texPlastic2.png"/>
+        <material name="matPlastic2" texture="texPlastic2" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic2" file="meshPlastic2.obj" scale="0.4 0.4 0.4"/>
+
+        <!-- plastic 3 -->
+        <texture name="texPlastic3" type="2d" file="texPlastic3.png"/>
+        <material name="matPlastic3" texture="texPlastic3" rgba="1 1 1 1.0" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic3" file="meshPlastic3.obj" scale="1.5 1.5 1.5"/>
+
+        <!-- plastic 4 -->
+        <texture name="texPlastic4" type="2d" file="texPlastic4.png"/>
+        <material name="matPlastic4" texture="texPlastic4" rgba="1 1 1 1.0" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic4" file="meshPlastic4.obj" scale="1 1 1"/>
+
+        <!-- plastic 5 -->
+        <texture name="texPlastic5" type="2d" file="texPlastic5.png"/>
+        <material name="matPlastic5" texture="texPlastic5" rgba="1 1 1 0.6" specular="1" shininess="0.8"/>
+        <mesh name="meshPlastic5" file="meshPlastic5.obj" scale="1 1 1"/>
+
+        <!-- plastic 6 -->
+        <texture name="texPlastic6" type="2d" file="texPlastic6.png"/>
+        <material name="matPlastic6" texture="texPlastic6" rgba="1 1 1 0.4" specular="0.8" shininess="0.7"/>
+        <mesh name="meshPlastic6" file="meshPlastic6.obj" scale="1 1 1"/>
+
+        <!-- plastic 7 -->
+        <texture name="texPlastic7" type="2d" file="texPlastic7.png"/>
+        <material name="matPlastic7" texture="texPlastic7" rgba="1 1 1 0.6" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic7" file="meshPlastic7.obj" scale="0.7 0.7 0.7"/>
+
+        <!-- plastic 8 -->
+        <texture name="texPlastic8" type="2d" file="texPlastic8.png"/>
+        <material name="matPlastic8" texture="texPlastic8" rgba="1 1 1 1.0" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic8" file="meshPlastic8.obj" scale="0.4 0.4 0.4"/>
+
+        <!-- plastic 9 -->
+        <texture name="texPlastic9" type="2d" file="texPlastic9.png"/>
+        <material name="matPlastic9" texture="texPlastic9" rgba="1 1 1 0.7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic9" file="meshPlastic9.obj" scale="1.2 1.2 1.2"/>
+
+        <!-- plastic 10 -->
+        <texture name="texPlastic10" type="2d" file="texPlastic10.png"/>
+        <material name="matPlastic10" texture="texPlastic10" rgba="1 1 1 1.0" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic10" file="meshPlastic10.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 11 -->
+        <texture name="texPlastic11" type="2d" file="texPlastic11.png"/>
+        <material name="matPlastic11" texture="texPlastic11" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic11" file="meshPlastic11.obj" scale="1 1 1"/>
+
+        <!-- plastic 12 -->
+        <texture name="texPlastic12" type="2d" file="texPlastic12.png"/>
+        <material name="matPlastic12" texture="texPlastic12" rgba="1 1 1 0.5" specular="1" shininess="0.8"/>
+        <mesh name="meshPlastic12" file="meshPlastic12.obj" scale="1 1 1"/>
+
+        <!-- plastic 13 -->
+        <texture name="texPlastic13" type="2d" file="texPlastic13.png"/>
+        <material name="matPlastic13" texture="texPlastic13" rgba="1 1 1 0.7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic13" file="meshPlastic13.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 14 -->
+        <texture name="texPlastic14" type="2d" file="texPlastic14.png"/>
+        <material name="matPlastic14" texture="texPlastic14" rgba="1 1 1 0.5" specular="1" shininess="0.8"/>
+        <mesh name="meshPlastic14" file="meshPlastic14.obj" scale="1 1 1"/>
+
+        <!-- plastic 15 -->
+        <texture name="texPlastic15" type="2d" file="texPlastic15.png"/>
+        <material name="matPlastic15" texture="texPlastic15" rgba="1 1 1 0.5" specular="1" shininess="0.8"/>
+        <mesh name="meshPlastic15" file="meshPlastic15.obj" scale=".6 .6 .6"/>
+
+        <!-- plastic 16 -->
+        <texture name="texPlastic16" type="2d" file="texPlastic16.png"/>
+        <material name="matPlastic16" texture="texPlastic16" rgba="1 1 1 0.5" specular="1" shininess="0.8"/>
+        <mesh name="meshPlastic16" file="meshPlastic16.obj" scale="1.4 1.4 1.4"/>
+
+        <!-- plastic 17 -->
+        <texture name="texPlastic17" type="2d" file="texPlastic17.png"/>
+        <material name="matPlastic17" texture="texPlastic17" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic17" file="meshPlastic17.obj" scale=".6 .5 .6"/>
+
+        <!-- plastic 18 -->
+        <texture name="texPlastic18" type="2d" file="texPlastic18.png"/>
+        <material name="matPlastic18" texture="texPlastic18" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic18" file="meshPlastic18.obj" scale="1.1 1.1 1.1"/>
+
+        <!-- plastic 19 -->
+        <texture name="texPlastic19" type="2d" file="texPlastic19.png"/>
+        <material name="matPlastic19" texture="texPlastic19" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic19" file="meshPlastic19.obj" scale="1.1 1.1 1.1"/>
+
+        <!-- plastic 20 -->
+        <texture name="texPlastic20" type="2d" file="texPlastic20.png"/>
+        <material name="matPlastic20" texture="texPlastic20" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic20" file="meshPlastic20.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 21 -->
+        <texture name="texPlastic21" type="2d" file="texPlastic21.png"/>
+        <material name="matPlastic21" texture="texPlastic21" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic21" file="meshPlastic21.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 22 -->
+        <texture name="texPlastic22" type="2d" file="texPlastic22.png"/>
+        <material name="matPlastic22" texture="texPlastic22" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic22" file="meshPlastic22.obj" scale=".8 .8 .8"/>
+
+        <!-- plastic 23 -->
+        <texture name="texPlastic23" type="2d" file="texPlastic23.png"/>
+        <material name="matPlastic23" texture="texPlastic23" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic23" file="meshPlastic23.obj" scale=".8 .8 .8"/>
+
+        <!-- plastic 24 -->
+        <texture name="texPlastic24" type="2d" file="texPlastic24.png"/>
+        <material name="matPlastic24" texture="texPlastic24" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic24" file="meshPlastic24.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 25 -->
+        <material name="matPlastic25" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8"/>
+        <mesh name="meshPlastic25" file="meshPlastic25.obj" scale=".6 .6 .6"/>
+
+        <!-- plastic 26 -->
+        <material name="matPlastic26" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8"/>
+        <mesh name="meshPlastic26" file="meshPlastic26.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 27 -->
+        <material name="matPlastic27" rgba="1 1 1 1" specular="0.5" shininess="0.8"/>
+        <mesh name="meshPlastic27" file="meshPlastic27.obj" scale=".3 .3 .3"/>
+
+        <!-- plastic 28 -->
+        <texture name="texPlastic28" type="2d" file="texPlastic28.png"/>
+        <material name="matPlastic28" texture="texPlastic28" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic28" file="meshPlastic28.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 29 -->
+        <material name="matPlastic29" rgba="1 1 1 1" specular="0.5" shininess="0.8"/>
+        <mesh name="meshPlastic29" file="meshPlastic29.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 30 -->
+        <material name="matPlastic30" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8"/>
+        <mesh name="meshPlastic30" file="meshPlastic30.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 31 -->
+        <material name="matPlastic31" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8"/>
+        <mesh name="meshPlastic31" file="meshPlastic31.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 32 -->
+        <material name="matPlastic32" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+
+        <!-- plastic 33 -->
+        <texture name="texPlastic33" type="2d" file="texPlastic33.png"/>
+        <material name="matPlastic33" texture="texPlastic33" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic33" file="meshPlastic33.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 34 -->
+        <material name="matPlastic34" rgba=".5 .5 .5 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic34" file="meshPlastic29.obj" scale=".2 .2 .2"/>
+
+        <!-- plastic 35 -->
+        <texture name="texPlastic35" type="2d" file="texPlastic35.png"/>
+        <material name="matPlastic35" texture="texPlastic35" rgba="1 1 1 0.8" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic35" file="meshPlastic35.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 36 -->
+        <material name="matPlastic36" rgba="1 0 0 1" specular="0.5" shininess="0.5"/>
+
+        <!-- plastic 37 -->
+        <material name="matPlastic37" rgba="1 1 0 1" specular="0.5" shininess="0.5"/>
+
+        <!-- plastic 38 -->
+        <material name="matPlastic38" rgba="1 1 1 .8" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic38" file="meshPlastic38.obj" scale="1 1 1"/>
+
+        <!-- plastic 39 -->
+        <texture name="texPlastic39" type="2d" file="texPlastic39.png"/>
+        <material name="matPlastic39" texture="texPlastic39" rgba="1 1 1 0.5" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic39" file="meshPlastic39.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 40 -->
+        <texture name="texPlastic40" type="2d" file="texPlastic40.png"/>
+        <material name="matPlastic40" texture="texPlastic40" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic40" file="meshPlastic40.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 41 -->
+        <texture name="texPlastic41" type="2d" file="texPlastic41.png"/>
+        <material name="matPlastic41" texture="texPlastic41" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic41" file="meshPlastic41.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 42 -->
+        <texture name="texPlastic42" type="2d" file="texPlastic42.png"/>
+        <material name="matPlastic42" texture="texPlastic42" rgba="1 1 1 .3" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic42" file="meshPlastic42.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 43 -->
+        <texture name="texPlastic43" type="2d" file="texPlastic43.png"/>
+        <material name="matPlastic43" texture="texPlastic43" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic43" file="meshPlastic43.obj" scale=".8 .8 .8"/>
+
+        <!-- plastic 44 -->
+        <texture name="texPlastic44" type="2d" file="texPlastic44.png"/>
+        <material name="matPlastic44" texture="texPlastic44" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic44" file="meshPlastic44.obj" scale=".8 .8 .8"/>
+
+        <!-- plastic 45 -->
+        <texture name="texPlastic45" type="2d" file="texPlastic45.png"/>
+        <material name="matPlastic45" texture="texPlastic45" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic45" file="meshPlastic45.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 46 -->
+        <texture name="texPlastic46" type="2d" file="texPlastic46.png"/>
+        <material name="matPlastic46" texture="texPlastic46" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic46" file="meshPlastic46.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 47 -->
+        <texture name="texPlastic47" type="2d" file="texPlastic47.png"/>
+        <material name="matPlastic47" texture="texPlastic47" rgba="1 1 1 .5" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic47" file="meshPlastic47.obj" scale=".8 .8 .8"/>
+
+        <!-- plastic 48 -->
+        <texture name="texPlastic48" type="2d" file="texPlastic48.png"/>
+        <material name="matPlastic48" texture="texPlastic48" rgba="1 1 1 .3" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic48" file="meshPlastic48.obj" scale=".6 .6 .6"/>
+
+        <!-- plastic 49 -->
+        <texture name="texPlastic49" type="2d" file="texPlastic49.png"/>
+        <material name="matPlastic49" texture="texPlastic49" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic49" file="meshPlastic49.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 50 -->
+        <texture name="texPlastic50" type="2d" file="texPlastic50.png"/>
+        <material name="matPlastic50" texture="texPlastic50" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic50" file="meshPlastic50.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 51 -->
+        <texture name="texPlastic51" type="2d" file="texPlastic51.png"/>
+        <material name="matPlastic51" texture="texPlastic51" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic51" file="meshPlastic51.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 52 -->
+        <texture name="texPlastic52" type="2d" file="texPlastic52.png"/>
+        <material name="matPlastic52" texture="texPlastic52" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic52" file="meshPlastic52.obj" scale=".6 .6 .6"/>
+
+        <!-- plastic 53 -->
+        <texture name="texPlastic53" type="2d" file="texPlastic53.png"/>
+        <material name="matPlastic53" texture="texPlastic53" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic53" file="meshPlastic53.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 54 -->
+        <texture name="texPlastic54" type="2d" file="texPlastic54.png"/>
+        <material name="matPlastic54" texture="texPlastic54" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic54" file="meshPlastic54.obj" scale=".6 .6 .6"/>
+
+        <!-- plastic 55 -->
+        <texture name="texPlastic55" type="2d" file="texPlastic55.png"/>
+        <material name="matPlastic55" texture="texPlastic55" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic55" file="meshPlastic55.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 56 -->
+        <texture name="texPlastic56" type="2d" file="texPlastic56.png"/>
+        <material name="matPlastic56" texture="texPlastic56" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic56" file="meshPlastic56.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 57 -->
+        <texture name="texPlastic57" type="2d" file="texPlastic57.png"/>
+        <material name="matPlastic57" texture="texPlastic57" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic57" file="meshPlastic57.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 58 -->
+        <texture name="texPlastic58" type="2d" file="texPlastic58.png"/>
+        <material name="matPlastic58" texture="texPlastic58" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic58" file="meshPlastic58.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 59 -->
+        <texture name="texPlastic59" type="2d" file="texPlastic59.png"/>
+        <material name="matPlastic59" texture="texPlastic59" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic59" file="meshPlastic59.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 60 -->
+        <texture name="texPlastic60" type="2d" file="texPlastic60.png"/>
+        <material name="matPlastic60" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic60" file="meshPlastic60.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 61 -->
+        <texture name="texPlastic61" type="2d" file="texPlastic61.png"/>
+        <material name="matPlastic61" texture="texPlastic61" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic61" file="meshPlastic61.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 62 -->
+        <texture name="texPlastic62" type="2d" file="texPlastic62.png"/>
+        <material name="matPlastic62" texture="texPlastic62" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic62" file="meshPlastic62.obj" scale=".5 .5 .5"/>
+
+        <!-- plastic 63 -->
+        <texture name="texPlastic63" type="2d" file="texPlastic63.png"/>
+        <material name="matPlastic63" texture="texPlastic63" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic63" file="meshPlastic63.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 64 -->
+        <texture name="texPlastic64" type="2d" file="texPlastic64.png"/>
+        <material name="matPlastic64" texture="texPlastic64" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic64" file="meshPlastic64.obj" scale=".3 .3 .3"/>
+
+        <!-- plastic 65 -->
+        <texture name="texPlastic65" type="2d" file="texPlastic65.png"/>
+        <material name="matPlastic65" texture="texPlastic65" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic65" file="meshPlastic65.obj" scale=".4 .4 .4"/>
+
+        <!-- plastic 66 -->
+        <texture name="texPlastic66" type="2d" file="texPlastic66.png"/>
+        <material name="matPlastic66" texture="texPlastic66" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic66" file="meshPlastic66.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 67 -->
+        <texture name="texPlastic67" type="2d" file="texPlastic67.png"/>
+        <material name="matPlastic67" texture="texPlastic67" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic67" file="meshPlastic67.obj" scale=".3 .3 .3"/>
+
+        <!-- plastic 68 -->
+        <texture name="texPlastic68" type="2d" file="texPlastic68.png"/>
+        <material name="matPlastic68" texture="texPlastic68" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic68" file="meshPlastic68.obj" scale=".3 .3 .3"/>
+
+        <!-- plastic 69 -->
+        <texture name="texPlastic69" type="2d" file="texPlastic69.png"/>
+        <material name="matPlastic69" texture="texPlastic69" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic69" file="meshPlastic69.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 70 -->
+        <texture name="texPlastic70" type="2d" file="texPlastic70.png"/>
+        <material name="matPlastic70" texture="texPlastic70" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic70" file="meshPlastic70.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 71 -->
+        <texture name="texPlastic71" type="2d" file="texPlastic71.png"/>
+        <material name="matPlastic71" texture="texPlastic71" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic71" file="meshPlastic71.obj" scale=".7 .7 .7"/>
+
+        <!-- plastic 72 -->
+        <texture name="texPlastic72" type="2d" file="texPlastic72.png"/>
+        <material name="matPlastic72" texture="texPlastic72" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPlastic72" file="meshPlastic72.obj" scale=".7 .7 .7"/>
+
+        <!-- Paper 1 -->
+        <texture name="texPaper1" type="2d" file="texPaper1.png"/>
+        <material name="matPaper1" texture="texPaper1" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper1" file="meshPaper1.obj" scale=".7 .7 .7"/>
+
+        <!-- Paper 2 -->
+        <texture name="texPaper2" type="2d" file="texPaper2.png"/>
+        <material name="matPaper2" texture="texPaper2" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper2" file="meshPaper2.obj" scale=".7 .7 .7"/>
+        
+        <!-- Paper 3 -->
+        <texture name="texPaper3" type="2d" file="texPaper3.png"/>
+        <material name="matPaper3" texture="texPaper3" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper3" file="meshPaper3.obj" scale=".7 .7 .7"/>
+
+        <!-- Paper 4 -->
+        <texture name="texPaper4" type="2d" file="texPaper4.png"/>
+        <material name="matPaper4" texture="texPaper4" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper4" file="meshPaper4.obj" scale=".5 .5 .5"/>
+
+        <!-- Paper 5 -->
+        <texture name="texPaper5" type="2d" file="texPaper5.png"/>
+        <material name="matPaper5" texture="texPaper5" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper5" file="meshPaper5.obj" scale="1 1 1"/>
+
+        <!-- Paper 6 -->
+        <texture name="texPaper6" type="2d" file="texPaper6.png"/>
+        <material name="matPaper6" texture="texPaper6" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper6" file="meshPaper6.obj" scale=".4 .4 .4"/>
+
+        <!-- Paper 7 -->
+        <texture name="texPaper7" type="2d" file="texPaper7.png"/>
+        <material name="matPaper7" texture="texPaper7" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper7" file="meshPaper7.obj" scale=".8 .8 .8"/>
+
+        <!-- Paper 8 -->
+        <texture name="texPaper8" type="2d" file="texPaper8.png"/>
+        <material name="matPaper8" texture="texPaper8" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper8" file="meshPaper8.obj" scale=".3 .3 .3"/>
+
+        <!-- Paper 9 -->
+        <texture name="texPaper9" type="2d" file="texPaper9.png"/>
+        <material name="matPaper9" texture="texPaper9" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper9" file="meshPaper9.obj" scale=".5 .5 .5"/>
+
+        <!-- Paper 10 -->
+        <texture name="texPaper10" type="2d" file="texPaper10.png"/>
+        <material name="matPaper10" rgba=".64 .52 .41 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshPaper10" file="meshPaper10.obj" scale="1 1 1"/>
+
+        <!-- Metal 1 -->
+        <texture name="texMetal1" type="2d" file="texMetal1.png"/>
+        <material name="matMetal1" texture="texMetal1" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal1" file="meshMetal1.obj" scale=".5 .5 .5"/>
+
+        <!-- Metal 2 -->
+        <texture name="texMetal2" type="2d" file="texMetal2.png"/>
+        <material name="matMetal2" texture="texMetal2" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal2" file="meshMetal2.obj" scale=".3 .3 .3"/>
+
+        <!-- Metal 3 -->
+        <texture name="texMetal3" type="2d" file="texMetal3.png"/>
+        <material name="matMetal3" texture="texMetal3" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal3" file="meshMetal3.obj" scale=".4 .4 .4"/>
+
+        <!-- Metal 4 -->
+        <texture name="texMetal4" type="2d" file="texMetal4.png"/>
+        <material name="matMetal4" texture="texMetal4" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal4" file="meshMetal4.obj" scale="1.5 1.5 1.5"/>
+
+        <!-- Metal 5 -->
+        <texture name="texMetal5" type="2d" file="texMetal5.png"/>
+        <material name="matMetal5" texture="texMetal5" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal5" file="meshMetal5.obj" scale=".2 .2 .2"/>
+
+        <!-- Metal 6 -->
+        <texture name="texMetal6" type="2d" file="texMetal6.png"/>
+        <material name="matMetal6" texture="texMetal6" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal6" file="meshMetal6.obj" scale=".8 .8 .8"/>
+
+        <!-- Metal 7 -->
+        <texture name="texMetal7" type="2d" file="texMetal7.png"/>
+        <material name="matMetal7" texture="texMetal7" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal7" file="meshMetal7.obj" scale=".5 .5 .5"/>
+
+        <!-- Metal 8 -->
+        <texture name="texMetal8" type="2d" file="texMetal8.png"/>
+        <material name="matMetal8" texture="texMetal8" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal8" file="meshMetal8.obj" scale=".5 .5 .5"/>
+
+        <!-- Metal 9 -->
+        <texture name="texMetal9" type="2d" file="texMetal9.png"/>
+        <material name="matMetal9" texture="texMetal9" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal9" file="meshMetal9.obj" scale=".7 .7 .7"/>
+
+        <!-- Metal 10 -->
+        <texture name="texMetal10" type="2d" file="texMetal10.png"/>
+        <material name="matMetal10" texture="texMetal10" rgba="1 1 1 1" specular="0.5" shininess="0.5"/>
+        <mesh name="meshMetal10" file="meshMetal10.obj" scale=".4 .4 .4"/>
+
+        <!-- Glass 1 -->
+        <texture name="texGlass1" type="2d" file="texGlass1.png"/>
+        <material name="matGlass1" texture="texGlass1" rgba="1 1 1 .4" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass1" file="meshGlass1.obj" scale="1 1 1"/>
+
+        <!-- Glass 2 -->
+        <texture name="texGlass2" type="2d" file="texGlass2.png"/>
+        <material name="matGlass2" texture="texGlass2" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass2" file="meshGlass2.obj" scale=".5 .5 .5"/>
+
+        <!-- Glass 3 -->
+        <texture name="texGlass3" type="2d" file="texGlass3.png"/>
+        <material name="matGlass3" texture="texGlass3" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass3" file="meshGlass3.obj" scale=".5 .5 .5"/>
+
+        <!-- Glass 4 -->
+        <texture name="texGlass4" type="2d" file="texGlass4.png"/>
+        <material name="matGlass4" texture="texGlass4" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass4" file="meshGlass4.obj" scale="1.2 1.2 1.2"/>
+
+        <!-- Glass 5 -->
+        <texture name="texGlass5" type="2d" file="texGlass5.png"/>
+        <material name="matGlass5" texture="texGlass5" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass5" file="meshGlass5.obj" scale=".5 .5 .5"/>
+
+        <!-- Glass 6 -->
+        <texture name="texGlass6" type="2d" file="texGlass6.png"/>
+        <material name="matGlass6" texture="texGlass6" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass6" file="meshGlass6.obj" scale=".4 .4 .4"/>
+
+        <!-- Glass 7 -->
+        <texture name="texGlass7" type="2d" file="texGlass7.png"/>
+        <material name="matGlass7" texture="texGlass7" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass7" file="meshGlass7.obj" scale=".7 .7 .7"/>
+
+        <!-- Glass 8 -->
+        <texture name="texGlass8" type="2d" file="texGlass8.png"/>
+        <material name="matGlass8" texture="texGlass8" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass8" file="meshGlass8.obj" scale=".6 .6 .6"/>
+
+        <!-- Glass 9 -->
+        <texture name="texGlass9" type="2d" file="texGlass9.png"/>
+        <material name="matGlass9" texture="texGlass9" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass9" file="meshGlass9.obj" scale=".7 .7 .7"/>
+
+        <!-- Glass 10 -->
+        <texture name="texGlass10" type="2d" file="texGlass10.png"/>
+        <material name="matGlass10" texture="texGlass10" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshGlass10" file="meshGlass10.obj" scale="1.1 1.1 1.1"/>
+
+        <!-- Elektronik 1 -->
+        <texture name="texElektronik1" type="2d" file="texElektronik1.png"/>
+        <material name="matElektronik1" texture="texElektronik1" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik1" file="meshElektronik1.obj" scale=".3 .3 .3"/>
+
+        <!-- Elektronik 2 -->
+        <texture name="texElektronik2" type="2d" file="texElektronik2.png"/>
+        <material name="matElektronik2" texture="texElektronik2" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik2" file="meshElektronik2.obj" scale=".7 .7 .7"/>
+
+        <!-- Elektronik 3 -->
+        <texture name="texElektronik3" type="2d" file="texElektronik3.png"/>
+        <material name="matElektronik3" texture="texElektronik3" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik3" file="meshElektronik3.obj" scale=".2 .2 .2"/>
+
+        <!-- Elektronik 4 -->
+        <texture name="texElektronik4" type="2d" file="texElektronik4.png"/>
+        <material name="matElektronik4" texture="texElektronik4" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik4" file="meshElektronik4.obj" scale=".6 .6 .6"/>
+
+        <!-- Elektronik 5 -->
+        <texture name="texElektronik5" type="2d" file="texElektronik5.png"/>
+        <material name="matElektronik5" texture="texElektronik5" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik5" file="meshElektronik5.obj" scale=".4 .4 .4"/>
+
+        <!-- Elektronik 6 -->
+        <texture name="texElektronik6" type="2d" file="texElektronik6.png"/>
+        <material name="matElektronik6" texture="texElektronik6" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik6" file="meshElektronik6.obj" scale=".8 .8 .8"/>
+
+        <!-- Elektronik 7 -->
+        <texture name="texElektronik7" type="2d" file="texElektronik7.png"/>
+        <material name="matElektronik7" texture="texElektronik7" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik7" file="meshElektronik7.obj" scale=".5 .5 .5"/>
+
+        <!-- Elektronik 8 -->
+        <texture name="texElektronik8" type="2d" file="texElektronik8.png"/>
+        <material name="matElektronik8" texture="texElektronik8" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik8" file="meshElektronik8.obj" scale=".6 .6 .6"/>
+
+        <!-- Elektronik 9 -->
+        <texture name="texElektronik9" type="2d" file="texElektronik9.png"/>
+        <material name="matElektronik9" texture="texElektronik9" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik9" file="meshElektronik9.obj" scale=".3 .3 .3"/>
+
+        <!-- Elektronik 10 -->
+        <texture name="texElektronik10" type="2d" file="texElektronik10.png"/>
+        <material name="matElektronik10" texture="texElektronik10" rgba="1 1 1 .7" specular="0.5" shininess="0.5"/>
+        <mesh name="meshElektronik10" file="meshElektronik10.obj" scale=".4 .4 .4"/>
+
+    </asset> 
+
+    <worldbody>
+        <!-- Floor -->
+        <geom name="floor" pos="0 0 0" size="0 0 1" type="plane" material="matplane"/>
+
+        <!-- Light -->
+        <light directional="true" diffuse=".7 .7 .8" specular=".2 .2 .2" pos="0 0 4" dir="0 0 -1"/>
+
+        <!-- plastic 1 | plastic bottle -->
+        <body name="plastic1" pos="0 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic1" type="mesh" material="matPlastic1"/>
+        </body>
+
+        <!-- plastic 3 | detergent bottle -->
+        <body name="plastic3" pos="0 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic3" type="mesh" material="matPlastic3"/>
+        </body>
+
+        <!-- plastic 4 | shampoo bottle -->
+        <body name="plastic4" pos="2 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic4" type="mesh" material="matPlastic4"/>
+        </body>
+
+        <!-- plastic 5 | plastic bottle -->
+        <body name="plastic5" pos="2 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic5" type="mesh" material="matPlastic5"/>
+        </body>
+
+        <!-- plastic 6 | plastic bottle -->
+        <body name="plastic6" pos="4 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic6" type="mesh" material="matPlastic6"/>
+        </body>
+
+        <!-- plastic 7 | plastic bottle -->
+        <body name="plastic7" pos="6 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic7" type="mesh" material="matPlastic7"/>
+        </body>
+
+        <!-- plastic 8 | yogurt cup -->
+        <body name="plastic8" pos="0 -8 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic8" type="mesh" material="matPlastic8"/>
+        </body>
+
+        <!-- plastic 9 | oil bottle -->
+        <body name="plastic9" pos="8 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic9" type="mesh" material="matPlastic9"/>
+        </body>
+
+        <!-- plastic 10 | kecap bottle -->
+        <body name="plastic10" pos="10 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic10" type="mesh" material="matPlastic10"/>
+        </body>
+
+        <!-- plastic 12 | plastic bottle -->
+        <body name="plastic12" pos="12 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic12" type="mesh" material="matPlastic12"/>
+        </body>
+
+        <!-- plastic 13 | nutela bottle -->
+        <body name="plastic13" pos="14 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic13" type="mesh" material="matPlastic13"/>
+        </body>
+
+        <!-- plastic 14 | plastic bottle -->
+        <body name="plastic14" pos="16 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic14" type="mesh" material="matPlastic14"/>
+        </body>
+
+        <!-- plastic 15 | plastic tray -->
+        <body name="plastic15" pos="2 -8 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic15" type="mesh" material="matPlastic15"/>
+        </body>
+
+        <!-- plastic 16 | plastic bottle -->
+        <body name="plastic16" pos="18 0 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic16" type="mesh" material="matPlastic16"/>
+        </body>
+
+        <!-- plastic 17 | milk bottle -->
+        <body name="plastic17" pos="4 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic17" type="mesh" material="matPlastic17"/>
+        </body>
+
+        <!-- plastic 18 | oil bottle -->
+        <body name="plastic18" pos="6 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic18" type="mesh" material="matPlastic18"/>
+        </body>
+
+        <!-- plastic 19 | deterjent bottle -->
+        <body name="plastic19" pos="8 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic19" type="mesh" material="matPlastic19"/>
+        </body>
+
+        <!-- plastic 20 | milk bottle -->
+        <body name="plastic20" pos="10 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic20" type="mesh" material="matPlastic20"/>
+        </body>
+
+        <!-- plastic 21 | shampoo bottle -->
+        <body name="plastic21" pos="12 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic21" type="mesh" material="matPlastic21"/>
+        </body>
+        
+        <!-- plastic 22 | motor oil -->
+        <body name="plastic22" pos="14 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic22" type="mesh" material="matPlastic22"/>
+        </body>
+
+        <!-- plastic 23 | soap bottle -->
+        <body name="plastic23" pos="16 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic23" type="mesh" material="matPlastic23"/>
+        </body>
+
+        <!-- plastic 24 | plastic bottle -->
+        <body name="plastic24" pos="18 -2 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic24" type="mesh" material="matPlastic24"/>
+        </body>
+
+        <!-- plastic 25 | pvc connetor T -->
+        <body name="plastic25" pos="0 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic25" type="mesh" material="matPlastic25"/>
+        </body>
+
+        <!-- plastic 26 | pvc connetor L -->
+        <body name="plastic26" pos="2 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic26" type="mesh" material="matPlastic26"/>
+        </body>
+
+        <!-- plastic 27 | access card -->
+        <body name="plastic27" pos="4 -4 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic27" type="mesh" material="matPlastic27"/>
+        </body>
+
+        <!-- plastic 28 | atm card -->
+        <body name="plastic28" pos="6 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic28" type="mesh" material="matPlastic28"/>
+        </body>
+
+        <!-- plastic 29 | pvc pipe -->
+        <body name="plastic29" pos="8 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic29" type="mesh" material="matPlastic29"/>
+        </body>
+
+        <!-- plastic 30 | pvc pipe -->
+        <body name="plastic30" pos="10 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic30" type="mesh" material="matPlastic30"/>
+        </body>
+
+        <!-- plastic 31 | pvc cross connector -->
+        <body name="plastic31" pos="12 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic31" type="mesh" material="matPlastic31"/>
+        </body>
+
+        <!-- plastic 32 | pvc cross connector -->
+        <body name="plastic32" pos="14 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic30" type="mesh" material="matPlastic32"/>
+        </body>
+
+        <!-- plastic 33 | debit card -->
+        <body name="plastic33" pos="16 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic33" type="mesh" material="matPlastic33"/>
+        </body>
+
+        <!-- plastic 34 | pvc pipe -->
+        <body name="plastic34" pos="18 -4 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic34" type="mesh" material="matPlastic34"/>
+        </body>
+
+        <!-- plastic 35 | souce bottle -->
+        <body name="plastic35" pos="0 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic35" type="mesh" material="matPlastic35"/>
+        </body>
+
+        <!-- plastic 36 | souce bottle -->
+        <body name="plastic36" pos="2 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic35" type="mesh" material="matPlastic36"/>
+        </body>
+
+        <!-- plastic 37 | souce bottle -->
+        <body name="plastic37" pos="4 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic35" type="mesh" material="matPlastic37"/>
+        </body>
+
+        <!-- plastic 38 | plastic bag -->
+        <body name="plastic38" pos="6 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic38" type="mesh" material="matPlastic38"/>
+        </body>
+
+        <!-- plastic 39 | plastic bag -->
+        <body name="plastic39" pos="8 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic39" type="mesh" material="matPlastic39"/>
+        </body>
+
+        <!-- plastic 40 | plastic bag -->
+        <body name="plastic40" pos="10 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic40" type="mesh" material="matPlastic40"/>
+        </body>
+
+        <!-- plastic 41 | plastic bag -->
+        <body name="plastic41" pos="12 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic41" type="mesh" material="matPlastic41"/>
+        </body>
+
+        <!-- plastic 42 | plastic bag -->
+        <body name="plastic42" pos="14 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic42" type="mesh" material="matPlastic42"/>
+        </body>
+
+        <!-- plastic 43 | plastic bag -->
+        <body name="plastic43" pos="16 -6 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic43" type="mesh" material="matPlastic43"/>
+        </body>
+
+        <!-- plastic 44 | plastic bag -->
+        <body name="plastic44" pos="18 -6 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic44" type="mesh" material="matPlastic44"/>
+        </body>
+
+        <!-- plastic 45 | plastic straw -->
+        <body name="plastic45" pos="4 -8 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic45" type="mesh" material="matPlastic45"/>
+        </body>
+
+        <!-- plastic 46 | plastic straw -->
+        <body name="plastic46" pos="6 -8 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic46" type="mesh" material="matPlastic46"/>
+        </body>
+
+        <!-- plastic 47 | thinwall -->
+        <body name="plastic47" pos="8 -8 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic47" type="mesh" material="matPlastic47"/>
+        </body>
+
+        <!-- plastic 48 | thinwall -->
+        <body name="plastic48" pos="10 -8 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic48" type="mesh" material="matPlastic48"/>
+        </body>
+
+        <!-- plastic 49 | plastic straw -->
+        <body name="plastic49" pos="12 -8 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic49" type="mesh" material="matPlastic49"/>
+        </body>
+
+        <!-- plastic 50 | blueband -->
+        <body name="plastic50" pos="14 -8 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic50" type="mesh" material="matPlastic50"/>
+        </body>
+
+        <!-- plastic 51 | blueband -->
+        <body name="plastic51" pos="16 -8 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic51" type="mesh" material="matPlastic51"/>
+        </body>
+
+        <!-- plastic 52 | meal box -->
+        <body name="plastic52" pos="18 -8 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic52" type="mesh" material="matPlastic52"/>
+        </body>
+
+        <!-- plastic 53 | styrofoam meal box -->
+        <body name="plastic53" pos="0 -10 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic53" type="mesh" material="matPlastic53"/>
+        </body>
+
+        <!-- plastic 54 | styrofoam meal box -->
+        <body name="plastic54" pos="2 -10 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic54" type="mesh" material="matPlastic54"/>
+        </body>
+
+        <!-- plastic 55 | styrofoam meal box -->
+        <body name="plastic55" pos="4 -10 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic55" type="mesh" material="matPlastic55"/>
+        </body>
+
+        <!-- plastic 56 | plastic spoon -->
+        <body name="plastic56" pos="6 -10 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic56" type="mesh" material="matPlastic56"/>
+        </body>
+
+        <!-- plastic 57 | plastic fork -->
+        <body name="plastic57" pos="8 -10 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic57" type="mesh" material="matPlastic57"/>
+        </body>
+
+        <!-- plastic 58 | plastic spoon -->
+        <body name="plastic58" pos="10 -10 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic58" type="mesh" material="matPlastic58"/>
+        </body>
+
+        <!-- plastic 59 | plastic fork -->
+        <body name="plastic59" pos="12 -10 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic59" type="mesh" material="matPlastic59"/>
+        </body>
+
+        <!-- plastic 60 | styrofoam tray -->
+        <body name="plastic60" pos="14 -10 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic60" type="mesh" material="matPlastic60"/>
+        </body>
+
+        <!-- plastic 61 | styrofoam tray -->
+        <body name="plastic61" pos="16 -10 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic61" type="mesh" material="matPlastic61"/>
+        </body>
+
+        <!-- plastic 62 | styrofoam tray -->
+        <body name="plastic62" pos="18 -10 2" euler="90 0 0">
+            <joint type="free"/>
+            <geom mesh="meshPlastic62" type="mesh" material="matPlastic62"/>
+        </body>
+
+        <!-- plastic 63 | multilayer plastic -->
+        <body name="plastic63" pos="0 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic63" type="mesh" material="matPlastic63"/>
+        </body>
+
+        <!-- plastic 64 | multilayer plastic -->
+        <body name="plastic64" pos="2 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic64" type="mesh" material="matPlastic64"/>
+        </body>
+
+        <!-- plastic 65 | multilayer plastic -->
+        <body name="plastic65" pos="4 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic65" type="mesh" material="matPlastic65"/>
+        </body>
+
+        <!-- plastic 66 | multilayer plastic -->
+        <body name="plastic66" pos="6 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic66" type="mesh" material="matPlastic66"/>
+        </body>
+
+        <!-- plastic 67 | multilayer plastic -->
+        <body name="plastic67" pos="8 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic67" type="mesh" material="matPlastic67"/>
+        </body>
+
+        <!-- plastic 68 | multilayer plastic -->
+        <body name="plastic68" pos="10 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic68" type="mesh" material="matPlastic68"/>
+        </body>
+
+        <!-- plastic 69 | multilayer plastic -->
+        <body name="plastic69" pos="12 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic69" type="mesh" material="matPlastic69"/>
+        </body>
+
+        <!-- plastic 70 | multilayer plastic -->
+        <body name="plastic70" pos="14 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic70" type="mesh" material="matPlastic70"/>
+        </body>
+
+        <!-- plastic 71 | multilayer plastic -->
+        <body name="plastic71" pos="16 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic71" type="mesh" material="matPlastic71"/>
+        </body>
+
+        <!-- plastic 72 | multilayer plastic -->
+        <body name="plastic72" pos="18 -12 2">
+            <joint type="free"/>
+            <geom mesh="meshPlastic72" type="mesh" material="matPlastic72"/>
+        </body>
+
+        <!-- paper 1 -->
+        <body name="paper1" pos="0 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper1" type="mesh" material="matPaper1"/>
+        </body>
+
+        <!-- paper 2 -->
+        <body name="paper2" pos="2 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper2" type="mesh" material="matPaper2"/>
+        </body>
+
+        <!-- paper 3 -->
+        <body name="paper3" pos="4 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper3" type="mesh" material="matPaper3"/>
+        </body>
+
+        <!-- paper 4 -->
+        <body name="paper4" pos="6 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper4" type="mesh" material="matPaper4"/>
+        </body>
+
+        <!-- paper 5 -->
+        <body name="paper5" pos="8 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper5" type="mesh" material="matPaper5"/>
+        </body>
+
+        <!-- paper 6 -->
+        <body name="paper6" pos="10 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper6" type="mesh" material="matPaper6"/>
+        </body>
+
+        <!-- paper 7 -->
+        <body name="paper7" pos="12 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper7" type="mesh" material="matPaper7"/>
+        </body>
+
+        <!-- paper 8 -->
+        <body name="paper8" pos="14 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper8" type="mesh" material="matPaper8"/>
+        </body>
+
+        <!-- paper 9 -->
+        <body name="paper9" pos="16 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper9" type="mesh" material="matPaper9"/>
+        </body>
+
+        <!-- paper 10 -->
+        <body name="paper10" pos="18 -20 2">
+            <joint type="free"/>
+            <geom mesh="meshPaper10" type="mesh" material="matPaper10"/>
+        </body>
+
+        <!-- metal 1 -->
+        <body name="metal1" pos="0 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal1" type="mesh" material="matMetal1"/>
+        </body>
+
+        <!-- metal 2 -->
+        <body name="metal2" pos="2 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal2" type="mesh" material="matMetal2"/>
+        </body>
+
+        <!-- metal 3 -->
+        <body name="metal3" pos="4 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal3" type="mesh" material="matMetal3"/>
+        </body>
+
+        <!-- metal 4 -->
+        <body name="metal4" pos="6 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal4" type="mesh" material="matMetal4"/>
+        </body>
+
+        <!-- metal 5 -->
+        <body name="metal5" pos="8 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal5" type="mesh" material="matMetal5"/>
+        </body>
+
+        <!-- metal 6 -->
+        <body name="metal6" pos="10 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal6" type="mesh" material="matMetal6"/>
+        </body>
+
+        <!-- metal 7 -->
+        <body name="metal7" pos="12 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal7" type="mesh" material="matMetal7"/>
+        </body>
+
+        <!-- metal 8 -->
+        <body name="metal8" pos="14 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal8" type="mesh" material="matMetal8"/>
+        </body>
+
+        <!-- metal 9 -->
+        <body name="metal9" pos="16 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal9" type="mesh" material="matMetal9"/>
+        </body>
+
+        <!-- metal 10 -->
+        <body name="metal10" pos="18 -22 2">
+            <joint type="free"/>
+            <geom mesh="meshMetal10" type="mesh" material="matMetal10"/>
+        </body>
+
+        <!-- Glass 1 -->
+        <body name="glass1" pos="0 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass1" type="mesh" material="matGlass1"/>
+        </body>
+
+        <!-- Glass 2 -->
+        <body name="glass2" pos="2 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass2" type="mesh" material="matGlass2"/>
+        </body>
+
+        <!-- Glass 3 -->
+        <body name="glass3" pos="4 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass3" type="mesh" material="matGlass3"/>
+        </body>
+
+        <!-- Glass 4 -->
+        <body name="glass4" pos="6 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass4" type="mesh" material="matGlass4"/>
+        </body>
+
+        <!-- Glass 5 -->
+        <body name="glass5" pos="8 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass5" type="mesh" material="matGlass5"/>
+        </body>
+
+        <!-- Glass 6 -->
+        <body name="glass6" pos="10 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass6" type="mesh" material="matGlass6"/>
+        </body>
+
+        <!-- Glass 7 -->
+        <body name="glass7" pos="12 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass7" type="mesh" material="matGlass7"/>
+        </body>
+
+        <!-- Glass 8 -->
+        <body name="glass8" pos="14 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass8" type="mesh" material="matGlass8"/>
+        </body>
+
+        <!-- Glass 9 -->
+        <body name="glass9" pos="16 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass9" type="mesh" material="matGlass9"/>
+        </body>
+
+        <!-- Glass 10 -->
+        <body name="glass10" pos="18 -24 2">
+            <joint type="free"/>
+            <geom mesh="meshGlass10" type="mesh" material="matGlass10"/>
+        </body>
+
+        <!-- Elektronik 1 -->
+        <body name="elektronik1" pos="0 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik1" type="mesh" material="matElektronik1"/>
+        </body>
+
+        <!-- Elektronik 2 -->
+        <body name="elektronik2" pos="2 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik2" type="mesh" material="matElektronik2"/>
+        </body>
+
+        <!-- Elektronik 3 -->
+        <body name="elektronik3" pos="4 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik3" type="mesh" material="matElektronik3"/>
+        </body>
+
+        <!-- Elektronik 4 -->
+        <body name="elektronik4" pos="6 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik4" type="mesh" material="matElektronik4"/>
+        </body>
+
+        <!-- Elektronik 5 -->
+        <body name="elektronik5" pos="8 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik5" type="mesh" material="matElektronik5"/>
+        </body>
+
+        <!-- Elektronik 6 -->
+        <body name="elektronik6" pos="10 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik6" type="mesh" material="matElektronik6"/>
+        </body>
+
+        <!-- Elektronik 7 -->
+        <body name="elektronik7" pos="12 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik7" type="mesh" material="matElektronik7"/>
+        </body>
+
+        <!-- Elektronik 8 -->
+        <body name="elektronik8" pos="14 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik8" type="mesh" material="matElektronik8"/>
+        </body>
+
+        <!-- Elektronik 9 -->
+        <body name="elektronik9" pos="16 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik9" type="mesh" material="matElektronik9"/>
+        </body>
+
+        <!-- Elektronik 10 -->
+        <body name="elektronik10" pos="18 -26 2">
+            <joint type="free"/>
+            <geom mesh="meshElektronik10" type="mesh" material="matElektronik10"/>
+        </body>
+
+    </worldbody>
+
+</mujoco>
