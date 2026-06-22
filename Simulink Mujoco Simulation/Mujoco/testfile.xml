@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="garbageCollection">
+    <compiler meshdir="mesh/" texturedir="texture/" />
+    <visual>
+        <rgba haze=".3 .3 .3 1" />
+    </visual>
+    <asset>
+        <texture name="texPlastic1" type="2d" file="texPlastic1.png" />
+        <material name="matPlastic1" texture="texPlastic1" rgba="1 1 1 0.4" specular="1" shininess="0.8" />
+        <mesh name="meshPlastic1" file="meshPlastic1.obj" scale=".9 .9 .9" />
+        <texture name="texPlastic2" type="2d" file="texPlastic2.png" />
+        <material name="matPlastic2" texture="texPlastic2" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic2" file="meshPlastic2.obj" scale="0.4 0.4 0.4" />
+        <texture name="texPlastic3" type="2d" file="texPlastic3.png" />
+        <material name="matPlastic3" texture="texPlastic3" rgba="1 1 1 1.0" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic3" file="meshPlastic3.obj" scale="1.5 1.5 1.5" />
+        <texture name="texPlastic4" type="2d" file="texPlastic4.png" />
+        <material name="matPlastic4" texture="texPlastic4" rgba="1 1 1 1.0" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic4" file="meshPlastic4.obj" scale="1 1 1" />
+        <texture name="texPlastic5" type="2d" file="texPlastic5.png" />
+        <material name="matPlastic5" texture="texPlastic5" rgba="1 1 1 0.6" specular="1" shininess="0.8" />
+        <mesh name="meshPlastic5" file="meshPlastic5.obj" scale="1 1 1" />
+        <texture name="texPlastic6" type="2d" file="texPlastic6.png" />
+        <material name="matPlastic6" texture="texPlastic6" rgba="1 1 1 0.4" specular="0.8" shininess="0.7" />
+        <mesh name="meshPlastic6" file="meshPlastic6.obj" scale="1 1 1" />
+        <texture name="texPlastic7" type="2d" file="texPlastic7.png" />
+        <material name="matPlastic7" texture="texPlastic7" rgba="1 1 1 0.6" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic7" file="meshPlastic7.obj" scale="0.7 0.7 0.7" />
+        <texture name="texPlastic8" type="2d" file="texPlastic8.png" />
+        <material name="matPlastic8" texture="texPlastic8" rgba="1 1 1 1.0" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic8" file="meshPlastic8.obj" scale="0.4 0.4 0.4" />
+        <texture name="texPlastic9" type="2d" file="texPlastic9.png" />
+        <material name="matPlastic9" texture="texPlastic9" rgba="1 1 1 0.7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic9" file="meshPlastic9.obj" scale="1.2 1.2 1.2" />
+        <texture name="texPlastic10" type="2d" file="texPlastic10.png" />
+        <material name="matPlastic10" texture="texPlastic10" rgba="1 1 1 1.0" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic10" file="meshPlastic10.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic11" type="2d" file="texPlastic11.png" />
+        <material name="matPlastic11" texture="texPlastic11" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic11" file="meshPlastic11.obj" scale="1 1 1" />
+        <texture name="texPlastic12" type="2d" file="texPlastic12.png" />
+        <material name="matPlastic12" texture="texPlastic12" rgba="1 1 1 0.5" specular="1" shininess="0.8" />
+        <mesh name="meshPlastic12" file="meshPlastic12.obj" scale="1 1 1" />
+        <texture name="texPlastic13" type="2d" file="texPlastic13.png" />
+        <material name="matPlastic13" texture="texPlastic13" rgba="1 1 1 0.7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic13" file="meshPlastic13.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic14" type="2d" file="texPlastic14.png" />
+        <material name="matPlastic14" texture="texPlastic14" rgba="1 1 1 0.5" specular="1" shininess="0.8" />
+        <mesh name="meshPlastic14" file="meshPlastic14.obj" scale="1 1 1" />
+        <texture name="texPlastic15" type="2d" file="texPlastic15.png" />
+        <material name="matPlastic15" texture="texPlastic15" rgba="1 1 1 0.5" specular="1" shininess="0.8" />
+        <mesh name="meshPlastic15" file="meshPlastic15.obj" scale=".6 .6 .6" />
+        <texture name="texPlastic16" type="2d" file="texPlastic16.png" />
+        <material name="matPlastic16" texture="texPlastic16" rgba="1 1 1 0.5" specular="1" shininess="0.8" />
+        <mesh name="meshPlastic16" file="meshPlastic16.obj" scale="1.4 1.4 1.4" />
+        <texture name="texPlastic17" type="2d" file="texPlastic17.png" />
+        <material name="matPlastic17" texture="texPlastic17" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic17" file="meshPlastic17.obj" scale=".6 .5 .6" />
+        <texture name="texPlastic18" type="2d" file="texPlastic18.png" />
+        <material name="matPlastic18" texture="texPlastic18" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic18" file="meshPlastic18.obj" scale="1.1 1.1 1.1" />
+        <texture name="texPlastic19" type="2d" file="texPlastic19.png" />
+        <material name="matPlastic19" texture="texPlastic19" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic19" file="meshPlastic19.obj" scale="1.1 1.1 1.1" />
+        <texture name="texPlastic20" type="2d" file="texPlastic20.png" />
+        <material name="matPlastic20" texture="texPlastic20" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic20" file="meshPlastic20.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic21" type="2d" file="texPlastic21.png" />
+        <material name="matPlastic21" texture="texPlastic21" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic21" file="meshPlastic21.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic22" type="2d" file="texPlastic22.png" />
+        <material name="matPlastic22" texture="texPlastic22" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic22" file="meshPlastic22.obj" scale=".8 .8 .8" />
+        <texture name="texPlastic23" type="2d" file="texPlastic23.png" />
+        <material name="matPlastic23" texture="texPlastic23" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic23" file="meshPlastic23.obj" scale=".8 .8 .8" />
+        <texture name="texPlastic24" type="2d" file="texPlastic24.png" />
+        <material name="matPlastic24" texture="texPlastic24" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic24" file="meshPlastic24.obj" scale=".5 .5 .5" />
+        <material name="matPlastic25" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8" />
+        <mesh name="meshPlastic25" file="meshPlastic25.obj" scale=".6 .6 .6" />
+        <material name="matPlastic26" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8" />
+        <mesh name="meshPlastic26" file="meshPlastic26.obj" scale=".4 .4 .4" />
+        <material name="matPlastic27" rgba="1 1 1 1" specular="0.5" shininess="0.8" />
+        <mesh name="meshPlastic27" file="meshPlastic27.obj" scale=".3 .3 .3" />
+        <texture name="texPlastic28" type="2d" file="texPlastic28.png" />
+        <material name="matPlastic28" texture="texPlastic28" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic28" file="meshPlastic28.obj" scale=".4 .4 .4" />
+        <material name="matPlastic29" rgba="1 1 1 1" specular="0.5" shininess="0.8" />
+        <mesh name="meshPlastic29" file="meshPlastic29.obj" scale=".4 .4 .4" />
+        <material name="matPlastic30" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8" />
+        <mesh name="meshPlastic30" file="meshPlastic30.obj" scale=".5 .5 .5" />
+        <material name="matPlastic31" rgba=".5 .5 .5 1" specular="0.5" shininess="0.8" />
+        <mesh name="meshPlastic31" file="meshPlastic31.obj" scale=".4 .4 .4" />
+        <material name="matPlastic32" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <texture name="texPlastic33" type="2d" file="texPlastic33.png" />
+        <material name="matPlastic33" texture="texPlastic33" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic33" file="meshPlastic33.obj" scale=".4 .4 .4" />
+        <material name="matPlastic34" rgba=".5 .5 .5 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic34" file="meshPlastic29.obj" scale=".2 .2 .2" />
+        <texture name="texPlastic35" type="2d" file="texPlastic35.png" />
+        <material name="matPlastic35" texture="texPlastic35" rgba="1 1 1 0.8" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic35" file="meshPlastic35.obj" scale=".7 .7 .7" />
+        <material name="matPlastic36" rgba="1 0 0 1" specular="0.5" shininess="0.5" />
+        <material name="matPlastic37" rgba="1 1 0 1" specular="0.5" shininess="0.5" />
+        <material name="matPlastic38" rgba="1 1 1 .8" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic38" file="meshPlastic38.obj" scale="1 1 1" />
+        <texture name="texPlastic39" type="2d" file="texPlastic39.png" />
+        <material name="matPlastic39" texture="texPlastic39" rgba="1 1 1 0.5" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic39" file="meshPlastic39.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic40" type="2d" file="texPlastic40.png" />
+        <material name="matPlastic40" texture="texPlastic40" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic40" file="meshPlastic40.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic41" type="2d" file="texPlastic41.png" />
+        <material name="matPlastic41" texture="texPlastic41" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic41" file="meshPlastic41.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic42" type="2d" file="texPlastic42.png" />
+        <material name="matPlastic42" texture="texPlastic42" rgba="1 1 1 .3" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic42" file="meshPlastic42.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic43" type="2d" file="texPlastic43.png" />
+        <material name="matPlastic43" texture="texPlastic43" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic43" file="meshPlastic43.obj" scale=".8 .8 .8" />
+        <texture name="texPlastic44" type="2d" file="texPlastic44.png" />
+        <material name="matPlastic44" texture="texPlastic44" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic44" file="meshPlastic44.obj" scale=".8 .8 .8" />
+        <texture name="texPlastic45" type="2d" file="texPlastic45.png" />
+        <material name="matPlastic45" texture="texPlastic45" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic45" file="meshPlastic45.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic46" type="2d" file="texPlastic46.png" />
+        <material name="matPlastic46" texture="texPlastic46" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic46" file="meshPlastic46.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic47" type="2d" file="texPlastic47.png" />
+        <material name="matPlastic47" texture="texPlastic47" rgba="1 1 1 .5" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic47" file="meshPlastic47.obj" scale=".8 .8 .8" />
+        <texture name="texPlastic48" type="2d" file="texPlastic48.png" />
+        <material name="matPlastic48" texture="texPlastic48" rgba="1 1 1 .3" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic48" file="meshPlastic48.obj" scale=".6 .6 .6" />
+        <texture name="texPlastic49" type="2d" file="texPlastic49.png" />
+        <material name="matPlastic49" texture="texPlastic49" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic49" file="meshPlastic49.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic50" type="2d" file="texPlastic50.png" />
+        <material name="matPlastic50" texture="texPlastic50" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic50" file="meshPlastic50.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic51" type="2d" file="texPlastic51.png" />
+        <material name="matPlastic51" texture="texPlastic51" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic51" file="meshPlastic51.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic52" type="2d" file="texPlastic52.png" />
+        <material name="matPlastic52" texture="texPlastic52" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic52" file="meshPlastic52.obj" scale=".6 .6 .6" />
+        <texture name="texPlastic53" type="2d" file="texPlastic53.png" />
+        <material name="matPlastic53" texture="texPlastic53" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic53" file="meshPlastic53.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic54" type="2d" file="texPlastic54.png" />
+        <material name="matPlastic54" texture="texPlastic54" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic54" file="meshPlastic54.obj" scale=".6 .6 .6" />
+        <texture name="texPlastic55" type="2d" file="texPlastic55.png" />
+        <material name="matPlastic55" texture="texPlastic55" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic55" file="meshPlastic55.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic56" type="2d" file="texPlastic56.png" />
+        <material name="matPlastic56" texture="texPlastic56" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic56" file="meshPlastic56.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic57" type="2d" file="texPlastic57.png" />
+        <material name="matPlastic57" texture="texPlastic57" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic57" file="meshPlastic57.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic58" type="2d" file="texPlastic58.png" />
+        <material name="matPlastic58" texture="texPlastic58" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic58" file="meshPlastic58.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic59" type="2d" file="texPlastic59.png" />
+        <material name="matPlastic59" texture="texPlastic59" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic59" file="meshPlastic59.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic60" type="2d" file="texPlastic60.png" />
+        <material name="matPlastic60" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic60" file="meshPlastic60.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic61" type="2d" file="texPlastic61.png" />
+        <material name="matPlastic61" texture="texPlastic61" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic61" file="meshPlastic61.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic62" type="2d" file="texPlastic62.png" />
+        <material name="matPlastic62" texture="texPlastic62" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic62" file="meshPlastic62.obj" scale=".5 .5 .5" />
+        <texture name="texPlastic63" type="2d" file="texPlastic63.png" />
+        <material name="matPlastic63" texture="texPlastic63" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic63" file="meshPlastic63.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic64" type="2d" file="texPlastic64.png" />
+        <material name="matPlastic64" texture="texPlastic64" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic64" file="meshPlastic64.obj" scale=".3 .3 .3" />
+        <texture name="texPlastic65" type="2d" file="texPlastic65.png" />
+        <material name="matPlastic65" texture="texPlastic65" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic65" file="meshPlastic65.obj" scale=".4 .4 .4" />
+        <texture name="texPlastic66" type="2d" file="texPlastic66.png" />
+        <material name="matPlastic66" texture="texPlastic66" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic66" file="meshPlastic66.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic67" type="2d" file="texPlastic67.png" />
+        <material name="matPlastic67" texture="texPlastic67" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic67" file="meshPlastic67.obj" scale=".3 .3 .3" />
+        <texture name="texPlastic68" type="2d" file="texPlastic68.png" />
+        <material name="matPlastic68" texture="texPlastic68" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic68" file="meshPlastic68.obj" scale=".3 .3 .3" />
+        <texture name="texPlastic69" type="2d" file="texPlastic69.png" />
+        <material name="matPlastic69" texture="texPlastic69" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic69" file="meshPlastic69.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic70" type="2d" file="texPlastic70.png" />
+        <material name="matPlastic70" texture="texPlastic70" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic70" file="meshPlastic70.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic71" type="2d" file="texPlastic71.png" />
+        <material name="matPlastic71" texture="texPlastic71" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic71" file="meshPlastic71.obj" scale=".7 .7 .7" />
+        <texture name="texPlastic72" type="2d" file="texPlastic72.png" />
+        <material name="matPlastic72" texture="texPlastic72" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPlastic72" file="meshPlastic72.obj" scale=".7 .7 .7" />
+        <texture name="texPaper1" type="2d" file="texPaper1.png" />
+        <material name="matPaper1" texture="texPaper1" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper1" file="meshPaper1.obj" scale=".7 .7 .7" />
+        <texture name="texPaper2" type="2d" file="texPaper2.png" />
+        <material name="matPaper2" texture="texPaper2" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper2" file="meshPaper2.obj" scale=".7 .7 .7" />
+        <texture name="texPaper3" type="2d" file="texPaper3.png" />
+        <material name="matPaper3" texture="texPaper3" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper3" file="meshPaper3.obj" scale=".7 .7 .7" />
+        <texture name="texPaper4" type="2d" file="texPaper4.png" />
+        <material name="matPaper4" texture="texPaper4" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper4" file="meshPaper4.obj" scale=".5 .5 .5" />
+        <texture name="texPaper5" type="2d" file="texPaper5.png" />
+        <material name="matPaper5" texture="texPaper5" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper5" file="meshPaper5.obj" scale="1 1 1" />
+        <texture name="texPaper6" type="2d" file="texPaper6.png" />
+        <material name="matPaper6" texture="texPaper6" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper6" file="meshPaper6.obj" scale=".4 .4 .4" />
+        <texture name="texPaper7" type="2d" file="texPaper7.png" />
+        <material name="matPaper7" texture="texPaper7" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper7" file="meshPaper7.obj" scale=".8 .8 .8" />
+        <texture name="texPaper8" type="2d" file="texPaper8.png" />
+        <material name="matPaper8" texture="texPaper8" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper8" file="meshPaper8.obj" scale=".3 .3 .3" />
+        <texture name="texPaper9" type="2d" file="texPaper9.png" />
+        <material name="matPaper9" texture="texPaper9" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper9" file="meshPaper9.obj" scale=".5 .5 .5" />
+        <texture name="texPaper10" type="2d" file="texPaper10.png" />
+        <material name="matPaper10" rgba=".64 .52 .41 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshPaper10" file="meshPaper10.obj" scale="1 1 1" />
+        <texture name="texMetal1" type="2d" file="texMetal1.png" />
+        <material name="matMetal1" texture="texMetal1" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal1" file="meshMetal1.obj" scale=".5 .5 .5" />
+        <texture name="texMetal2" type="2d" file="texMetal2.png" />
+        <material name="matMetal2" texture="texMetal2" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal2" file="meshMetal2.obj" scale=".3 .3 .3" />
+        <texture name="texMetal3" type="2d" file="texMetal3.png" />
+        <material name="matMetal3" texture="texMetal3" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal3" file="meshMetal3.obj" scale=".4 .4 .4" />
+        <texture name="texMetal4" type="2d" file="texMetal4.png" />
+        <material name="matMetal4" texture="texMetal4" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal4" file="meshMetal4.obj" scale="1.5 1.5 1.5" />
+        <texture name="texMetal5" type="2d" file="texMetal5.png" />
+        <material name="matMetal5" texture="texMetal5" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal5" file="meshMetal5.obj" scale=".2 .2 .2" />
+        <texture name="texMetal6" type="2d" file="texMetal6.png" />
+        <material name="matMetal6" texture="texMetal6" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal6" file="meshMetal6.obj" scale=".8 .8 .8" />
+        <texture name="texMetal7" type="2d" file="texMetal7.png" />
+        <material name="matMetal7" texture="texMetal7" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal7" file="meshMetal7.obj" scale=".5 .5 .5" />
+        <texture name="texMetal8" type="2d" file="texMetal8.png" />
+        <material name="matMetal8" texture="texMetal8" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal8" file="meshMetal8.obj" scale=".5 .5 .5" />
+        <texture name="texMetal9" type="2d" file="texMetal9.png" />
+        <material name="matMetal9" texture="texMetal9" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal9" file="meshMetal9.obj" scale=".7 .7 .7" />
+        <texture name="texMetal10" type="2d" file="texMetal10.png" />
+        <material name="matMetal10" texture="texMetal10" rgba="1 1 1 1" specular="0.5" shininess="0.5" />
+        <mesh name="meshMetal10" file="meshMetal10.obj" scale=".4 .4 .4" />
+        <texture name="texGlass1" type="2d" file="texGlass1.png" />
+        <material name="matGlass1" texture="texGlass1" rgba="1 1 1 .4" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass1" file="meshGlass1.obj" scale="1 1 1" />
+        <texture name="texGlass2" type="2d" file="texGlass2.png" />
+        <material name="matGlass2" texture="texGlass2" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass2" file="meshGlass2.obj" scale=".5 .5 .5" />
+        <texture name="texGlass3" type="2d" file="texGlass3.png" />
+        <material name="matGlass3" texture="texGlass3" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass3" file="meshGlass3.obj" scale=".5 .5 .5" />
+        <texture name="texGlass4" type="2d" file="texGlass4.png" />
+        <material name="matGlass4" texture="texGlass4" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass4" file="meshGlass4.obj" scale="1.2 1.2 1.2" />
+        <texture name="texGlass5" type="2d" file="texGlass5.png" />
+        <material name="matGlass5" texture="texGlass5" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass5" file="meshGlass5.obj" scale=".5 .5 .5" />
+        <texture name="texGlass6" type="2d" file="texGlass6.png" />
+        <material name="matGlass6" texture="texGlass6" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass6" file="meshGlass6.obj" scale=".4 .4 .4" />
+        <texture name="texGlass7" type="2d" file="texGlass7.png" />
+        <material name="matGlass7" texture="texGlass7" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass7" file="meshGlass7.obj" scale=".7 .7 .7" />
+        <texture name="texGlass8" type="2d" file="texGlass8.png" />
+        <material name="matGlass8" texture="texGlass8" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass8" file="meshGlass8.obj" scale=".6 .6 .6" />
+        <texture name="texGlass9" type="2d" file="texGlass9.png" />
+        <material name="matGlass9" texture="texGlass9" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass9" file="meshGlass9.obj" scale=".7 .7 .7" />
+        <texture name="texGlass10" type="2d" file="texGlass10.png" />
+        <material name="matGlass10" texture="texGlass10" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshGlass10" file="meshGlass10.obj" scale="1.1 1.1 1.1" />
+        <texture name="texElektronik1" type="2d" file="texElektronik1.png" />
+        <material name="matElektronik1" texture="texElektronik1" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik1" file="meshElektronik1.obj" scale=".3 .3 .3" />
+        <texture name="texElektronik2" type="2d" file="texElektronik2.png" />
+        <material name="matElektronik2" texture="texElektronik2" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik2" file="meshElektronik2.obj" scale=".7 .7 .7" />
+        <texture name="texElektronik3" type="2d" file="texElektronik3.png" />
+        <material name="matElektronik3" texture="texElektronik3" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik3" file="meshElektronik3.obj" scale=".2 .2 .2" />
+        <texture name="texElektronik4" type="2d" file="texElektronik4.png" />
+        <material name="matElektronik4" texture="texElektronik4" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik4" file="meshElektronik4.obj" scale=".6 .6 .6" />
+        <texture name="texElektronik5" type="2d" file="texElektronik5.png" />
+        <material name="matElektronik5" texture="texElektronik5" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik5" file="meshElektronik5.obj" scale=".4 .4 .4" />
+        <texture name="texElektronik6" type="2d" file="texElektronik6.png" />
+        <material name="matElektronik6" texture="texElektronik6" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik6" file="meshElektronik6.obj" scale=".8 .8 .8" />
+        <texture name="texElektronik7" type="2d" file="texElektronik7.png" />
+        <material name="matElektronik7" texture="texElektronik7" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik7" file="meshElektronik7.obj" scale=".5 .5 .5" />
+        <texture name="texElektronik8" type="2d" file="texElektronik8.png" />
+        <material name="matElektronik8" texture="texElektronik8" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik8" file="meshElektronik8.obj" scale=".6 .6 .6" />
+        <texture name="texElektronik9" type="2d" file="texElektronik9.png" />
+        <material name="matElektronik9" texture="texElektronik9" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik9" file="meshElektronik9.obj" scale=".3 .3 .3" />
+        <texture name="texElektronik10" type="2d" file="texElektronik10.png" />
+        <material name="matElektronik10" texture="texElektronik10" rgba="1 1 1 .7" specular="0.5" shininess="0.5" />
+        <mesh name="meshElektronik10" file="meshElektronik10.obj" scale=".4 .4 .4" />
+    </asset>
+    <worldbody>
+        <body name="paper10" pos="0.8 -2.0 15">
+            <joint type="free" />
+            <geom mesh="meshPaper10" type="mesh" material="matPaper10" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.953 0.248 0.955" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass8" pos="-0.8 -1.0 20">
+            <joint type="free" />
+            <geom mesh="meshGlass8" type="mesh" material="matGlass8" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.513 0.573 0.512" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal7" pos="0.8 0.0 25">
+            <joint type="free" />
+            <geom mesh="meshMetal7" type="mesh" material="matMetal7" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.165 0.478 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass5" pos="-0.8 1.0 30">
+            <joint type="free" />
+            <geom mesh="meshGlass5" type="mesh" material="matGlass5" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.285 0.478 0.286" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik10" pos="0.8 2.0 35">
+            <joint type="free" />
+            <geom mesh="meshElektronik10" type="mesh" material="matElektronik10" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.382 0.100 0.121" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic70" pos="-0.8 -2.0 40">
+            <joint type="free" />
+            <geom mesh="meshPlastic70" type="mesh" material="matPlastic70" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.439 0.668 0.292" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper4" pos="0.8 -1.0 45">
+            <joint type="free" />
+            <geom mesh="meshPaper4" type="mesh" material="matPaper4" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.478 0.402 0.209" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal5" pos="-0.8 0.0 50">
+            <joint type="free" />
+            <geom mesh="meshMetal5" type="mesh" material="matMetal5" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.189 0.100 0.190" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic35" pos="0.8 1.0 55">
+            <joint type="free" />
+            <geom mesh="meshPlastic35" type="mesh" material="matPlastic35" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.211 0.671 0.214" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass10" pos="-0.8 2.0 60">
+            <joint type="free" />
+            <geom mesh="meshGlass10" type="mesh" material="matGlass10" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.259 1.051 0.260" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic28" pos="0.8 -2.0 65">
+            <joint type="free" />
+            <geom mesh="meshPlastic28" type="mesh" material="matPlastic28" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.384 0.192 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik5" pos="-0.8 -1.0 70">
+            <joint type="free" />
+            <geom mesh="meshElektronik5" type="mesh" material="matElektronik5" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.381 0.118 0.326" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic42" pos="0.8 0.0 75">
+            <joint type="free" />
+            <geom mesh="meshPlastic42" type="mesh" material="matPlastic42" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.304 0.475 0.144" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass4" pos="-0.8 1.0 80">
+            <joint type="free" />
+            <geom mesh="meshGlass4" type="mesh" material="matGlass4" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.281 1.147 0.281" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal10" pos="0.8 2.0 85">
+            <joint type="free" />
+            <geom mesh="meshMetal10" type="mesh" material="matMetal10" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.375 0.242 0.263" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic26" pos="-0.8 -2.0 90">
+            <joint type="free" />
+            <geom mesh="meshPlastic26" type="mesh" material="matPlastic26" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.384 0.384 0.207" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper7" pos="0.8 -1.0 95">
+            <joint type="free" />
+            <geom mesh="meshPaper7" type="mesh" material="matPaper7" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.409 0.760 0.242" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic19" pos="-0.8 0.0 100">
+            <joint type="free" />
+            <geom mesh="meshPlastic19" type="mesh" material="matPlastic19" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.609 1.055 0.354" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic72" pos="0.8 1.0 105">
+            <joint type="free" />
+            <geom mesh="meshPlastic72" type="mesh" material="matPlastic72" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.481 0.664 0.280" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic58" pos="-0.8 2.0 110">
+            <joint type="free" />
+            <geom mesh="meshPlastic58" type="mesh" material="matPlastic58" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.100 0.478 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic16" pos="0.8 -2.0 115">
+            <joint type="free" />
+            <geom mesh="meshPlastic16" type="mesh" material="matPlastic16" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.357 1.343 0.358" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik7" pos="-0.8 -1.0 120">
+            <joint type="free" />
+            <geom mesh="meshElektronik7" type="mesh" material="matElektronik7" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.305 0.119 0.478" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass9" pos="0.8 0.0 125">
+            <joint type="free" />
+            <geom mesh="meshGlass9" type="mesh" material="matGlass9" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.200 0.669 0.206" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic67" pos="-0.8 1.0 130">
+            <joint type="free" />
+            <geom mesh="meshPlastic67" type="mesh" material="matPlastic67" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.273 0.286 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic54" pos="0.8 2.0 135" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic54" type="mesh" material="matPlastic54" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.572 0.196 0.472" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper5" pos="-0.8 -2.0 140">
+            <joint type="free" />
+            <geom mesh="meshPaper5" type="mesh" material="matPaper5" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.954 0.100 0.809" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic13" pos="0.8 -1.0 145">
+            <joint type="free" />
+            <geom mesh="meshPlastic13" type="mesh" material="matPlastic13" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.335 0.400 0.331" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik1" pos="-0.8 0.0 150">
+            <joint type="free" />
+            <geom mesh="meshElektronik1" type="mesh" material="matElektronik1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.286 0.100 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic5" pos="0.8 1.0 155">
+            <joint type="free" />
+            <geom mesh="meshPlastic5" type="mesh" material="matPlastic5" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="1.000 0.322 0.414" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic12" pos="-0.8 2.0 160">
+            <joint type="free" />
+            <geom mesh="meshPlastic12" type="mesh" material="matPlastic12" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.279 1.000 0.292" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic33" pos="0.8 -2.0 165">
+            <joint type="free" />
+            <geom mesh="meshPlastic33" type="mesh" material="matPlastic33" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.400 0.263 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik4" pos="-0.8 -1.0 170">
+            <joint type="free" />
+            <geom mesh="meshElektronik4" type="mesh" material="matElektronik4" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.317 0.572 0.316" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic20" pos="0.8 0.0 175">
+            <joint type="free" />
+            <geom mesh="meshPlastic20" type="mesh" material="matPlastic20" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.216 0.479 0.216" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic17" pos="-0.8 1.0 180">
+            <joint type="free" />
+            <geom mesh="meshPlastic17" type="mesh" material="matPlastic17" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.216 0.480 0.216" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik3" pos="0.8 2.0 185">
+            <joint type="free" />
+            <geom mesh="meshElektronik3" type="mesh" material="matElektronik3" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.191 0.100 0.191" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic48" pos="-0.8 -2.0 190" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic48" type="mesh" material="matPlastic48" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.573 0.198 0.371" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic4" pos="0.8 -1.0 195">
+            <joint type="free" />
+            <geom mesh="meshPlastic4" type="mesh" material="matPlastic4" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.289 0.966 0.217" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic61" pos="-0.8 0.0 200" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic61" type="mesh" material="matPlastic61" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.478 0.100 0.350" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal2" pos="0.8 1.0 205">
+            <joint type="free" />
+            <geom mesh="meshMetal2" type="mesh" material="matMetal2" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.264 0.284 0.265" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic56" pos="-0.8 2.0 210">
+            <joint type="free" />
+            <geom mesh="meshPlastic56" type="mesh" material="matPlastic56" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.114 0.477 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic22" pos="0.8 -2.0 215">
+            <joint type="free" />
+            <geom mesh="meshPlastic22" type="mesh" material="matPlastic22" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.418 0.768 0.204" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic60" pos="-0.8 -1.0 220" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic60" type="mesh" material="matPlastic60" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.477 0.100 0.332" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic32" pos="0.8 0.0 225">
+            <joint type="free" />
+            <geom mesh="meshPlastic30" type="mesh" material="matPlastic32" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.203 0.476 0.203" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic18" pos="-0.8 1.0 230">
+            <joint type="free" />
+            <geom mesh="meshPlastic18" type="mesh" material="matPlastic18" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.520 1.052 0.273" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic43" pos="0.8 2.0 235" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic43" type="mesh" material="matPlastic43" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.556 0.118 0.761" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal9" pos="-0.8 -2.0 240">
+            <joint type="free" />
+            <geom mesh="meshMetal9" type="mesh" material="matMetal9" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.648 0.669 0.649" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic41" pos="0.8 -1.0 245">
+            <joint type="free" />
+            <geom mesh="meshPlastic41" type="mesh" material="matPlastic41" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.668 0.668 0.369" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic37" pos="-0.8 0.0 250">
+            <joint type="free" />
+            <geom mesh="meshPlastic35" type="mesh" material="matPlastic37" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.211 0.671 0.214" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic62" pos="0.8 1.0 255" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic62" type="mesh" material="matPlastic62" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.472 0.100 0.476" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic25" pos="-0.8 2.0 260">
+            <joint type="free" />
+            <geom mesh="meshPlastic25" type="mesh" material="matPlastic25" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.576 0.207 0.375" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass1" pos="0.8 -2.0 265">
+            <joint type="free" />
+            <geom mesh="meshGlass1" type="mesh" material="matGlass1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.218 0.956 0.218" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal8" pos="-0.8 -1.0 270">
+            <joint type="free" />
+            <geom mesh="meshMetal8" type="mesh" material="matMetal8" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.181 0.478 0.181" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic10" pos="0.8 0.0 275">
+            <joint type="free" />
+            <geom mesh="meshPlastic10" type="mesh" material="matPlastic10" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.170 0.700 0.170" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic27" pos="-0.8 1.0 280" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic27" type="mesh" material="matPlastic27" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.286 0.100 0.188" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal1" pos="0.8 2.0 285">
+            <joint type="free" />
+            <geom mesh="meshMetal1" type="mesh" material="matMetal1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.181 0.478 0.183" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic68" pos="-0.8 -2.0 290">
+            <joint type="free" />
+            <geom mesh="meshPlastic68" type="mesh" material="matPlastic68" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.217 0.286 0.104" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper3" pos="0.8 -1.0 295">
+            <joint type="free" />
+            <geom mesh="meshPaper3" type="mesh" material="matPaper3" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.209 0.669 0.209" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic65" pos="-0.8 0.0 300">
+            <joint type="free" />
+            <geom mesh="meshPlastic65" type="mesh" material="matPlastic65" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.382 0.294 0.117" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic31" pos="0.8 1.0 305">
+            <joint type="free" />
+            <geom mesh="meshPlastic31" type="mesh" material="matPlastic31" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.381 0.217 0.381" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic59" pos="-0.8 2.0 310">
+            <joint type="free" />
+            <geom mesh="meshPlastic59" type="mesh" material="matPlastic59" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.100 0.477 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic34" pos="0.8 -2.0 315">
+            <joint type="free" />
+            <geom mesh="meshPlastic34" type="mesh" material="matPlastic34" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.191 0.190 0.142" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper1" pos="-0.8 -1.0 320">
+            <joint type="free" />
+            <geom mesh="meshPaper1" type="mesh" material="matPaper1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.668 0.100 0.162" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic55" pos="0.8 0.0 325">
+            <joint type="free" />
+            <geom mesh="meshPlastic55" type="mesh" material="matPlastic55" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.578 0.320 0.666" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic15" pos="-0.8 1.0 330" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic15" type="mesh" material="matPlastic15" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.574 0.155 0.573" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic51" pos="0.8 2.0 335" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic51" type="mesh" material="matPlastic51" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.382 0.183 0.305" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal4" pos="-0.8 -2.0 340">
+            <joint type="free" />
+            <geom mesh="meshMetal4" type="mesh" material="matMetal4" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.329 1.434 0.332" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic66" pos="0.8 -1.0 345">
+            <joint type="free" />
+            <geom mesh="meshPlastic66" type="mesh" material="matPlastic66" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.586 0.662 0.258" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic50" pos="-0.8 0.0 350" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic50" type="mesh" material="matPlastic50" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.381 0.234 0.380" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic3" pos="0.8 1.0 355">
+            <joint type="free" />
+            <geom mesh="meshPlastic3" type="mesh" material="matPlastic3" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.601 1.439 0.583" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic6" pos="-0.8 2.0 360">
+            <joint type="free" />
+            <geom mesh="meshPlastic6" type="mesh" material="matPlastic6" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="1.000 0.339 0.339" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic52" pos="0.8 -2.0 365" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic52" type="mesh" material="matPlastic52" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.572 0.232 0.320" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic69" pos="-0.8 -1.0 370">
+            <joint type="free" />
+            <geom mesh="meshPlastic69" type="mesh" material="matPlastic69" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.447 0.665 0.234" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic63" pos="0.8 0.0 375">
+            <joint type="free" />
+            <geom mesh="meshPlastic63" type="mesh" material="matPlastic63" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.382 0.278 0.127" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic23" pos="-0.8 1.0 380">
+            <joint type="free" />
+            <geom mesh="meshPlastic23" type="mesh" material="matPlastic23" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.355 0.768 0.151" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic47" pos="0.8 2.0 385" euler="90 0 0">
+            <joint type="free" />
+            <geom mesh="meshPlastic47" type="mesh" material="matPlastic47" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.764 0.220 0.562" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic36" pos="-0.8 -2.0 390">
+            <joint type="free" />
+            <geom mesh="meshPlastic35" type="mesh" material="matPlastic36" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.211 0.671 0.214" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic40" pos="0.8 -1.0 395">
+            <joint type="free" />
+            <geom mesh="meshPlastic40" type="mesh" material="matPlastic40" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.438 0.664 0.377" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper9" pos="-0.8 0.0 400">
+            <joint type="free" />
+            <geom mesh="meshPaper9" type="mesh" material="matPaper9" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.389 0.334 0.477" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic14" pos="0.8 1.0 405">
+            <joint type="free" />
+            <geom mesh="meshPlastic14" type="mesh" material="matPlastic14" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="1.000 0.270 0.492" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic53" pos="-0.8 2.0 410">
+            <joint type="free" />
+            <geom mesh="meshPlastic53" type="mesh" material="matPlastic53" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.380 0.367 0.380" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic7" pos="0.8 -2.0 415">
+            <joint type="free" />
+            <geom mesh="meshPlastic7" type="mesh" material="matPlastic7" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.549 0.657 0.700" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik2" pos="-0.8 -1.0 420">
+            <joint type="free" />
+            <geom mesh="meshElektronik2" type="mesh" material="matElektronik2" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.366 0.668 0.364" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik8" pos="0.8 0.0 425">
+            <joint type="free" />
+            <geom mesh="meshElektronik8" type="mesh" material="matElektronik8" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.572 0.200 0.363" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic30" pos="-0.8 1.0 430">
+            <joint type="free" />
+            <geom mesh="meshPlastic30" type="mesh" material="matPlastic30" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.203 0.476 0.203" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik9" pos="0.8 2.0 435">
+            <joint type="free" />
+            <geom mesh="meshElektronik9" type="mesh" material="matElektronik9" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.165 0.161 0.286" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic24" pos="-0.8 -2.0 440">
+            <joint type="free" />
+            <geom mesh="meshPlastic24" type="mesh" material="matPlastic24" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.200 0.480 0.181" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic57" pos="0.8 -1.0 445">
+            <joint type="free" />
+            <geom mesh="meshPlastic57" type="mesh" material="matPlastic57" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.100 0.476 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic46" pos="-0.8 0.0 450">
+            <joint type="free" />
+            <geom mesh="meshPlastic46" type="mesh" material="matPlastic46" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.169 0.477 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal3" pos="0.8 1.0 455">
+            <joint type="free" />
+            <geom mesh="meshMetal3" type="mesh" material="matMetal3" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.382 0.382 0.222" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="metal6" pos="-0.8 2.0 460">
+            <joint type="free" />
+            <geom mesh="meshMetal6" type="mesh" material="matMetal6" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.350 0.764 0.358" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic9" pos="0.8 -2.0 465">
+            <joint type="free" />
+            <geom mesh="meshPlastic9" type="mesh" material="matPlastic9" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.337 1.200 0.338" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic64" pos="-0.8 -1.0 470">
+            <joint type="free" />
+            <geom mesh="meshPlastic64" type="mesh" material="matPlastic64" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.197 0.287 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic39" pos="0.8 0.0 475">
+            <joint type="free" />
+            <geom mesh="meshPlastic39" type="mesh" material="matPlastic39" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.280 0.382 0.120" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass3" pos="-0.8 1.0 480">
+            <joint type="free" />
+            <geom mesh="meshGlass3" type="mesh" material="matGlass3" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.184 0.478 0.184" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass2" pos="0.8 2.0 485">
+            <joint type="free" />
+            <geom mesh="meshGlass2" type="mesh" material="matGlass2" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.174 0.478 0.174" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic45" pos="-0.8 -2.0 490">
+            <joint type="free" />
+            <geom mesh="meshPlastic45" type="mesh" material="matPlastic45" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.189 0.668 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic8" pos="0.8 -1.0 495">
+            <joint type="free" />
+            <geom mesh="meshPlastic8" type="mesh" material="matPlastic8" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.390 0.400 0.287" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic29" pos="-0.8 0.0 500">
+            <joint type="free" />
+            <geom mesh="meshPlastic29" type="mesh" material="matPlastic29" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.381 0.380 0.284" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic49" pos="0.8 1.0 505">
+            <joint type="free" />
+            <geom mesh="meshPlastic49" type="mesh" material="matPlastic49" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.100 0.478 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass7" pos="-0.8 2.0 510">
+            <joint type="free" />
+            <geom mesh="meshGlass7" type="mesh" material="matGlass7" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.184 0.669 0.184" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper6" pos="0.8 -2.0 515">
+            <joint type="free" />
+            <geom mesh="meshPaper6" type="mesh" material="matPaper6" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.382 0.162 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper8" pos="-0.8 -1.0 520">
+            <joint type="free" />
+            <geom mesh="meshPaper8" type="mesh" material="matPaper8" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.191 0.285 0.100" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic1" pos="0.8 0.0 525">
+            <joint type="free" />
+            <geom mesh="meshPlastic1" type="mesh" material="matPlastic1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.858 0.428 0.262" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic38" pos="-0.8 1.0 530">
+            <joint type="free" />
+            <geom mesh="meshPlastic38" type="mesh" material="matPlastic38" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.661 0.956 0.523" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="glass6" pos="0.8 2.0 535">
+            <joint type="free" />
+            <geom mesh="meshGlass6" type="mesh" material="matGlass6" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.179 0.382 0.179" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="paper2" pos="-0.8 -2.0 540">
+            <joint type="free" />
+            <geom mesh="meshPaper2" type="mesh" material="matPaper2" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.666 0.341 0.272" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic71" pos="0.8 -1.0 545">
+            <joint type="free" />
+            <geom mesh="meshPlastic71" type="mesh" material="matPlastic71" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.441 0.668 0.210" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic44" pos="-0.8 0.0 550">
+            <joint type="free" />
+            <geom mesh="meshPlastic44" type="mesh" material="matPlastic44" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.658 0.758 0.270" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="elektronik6" pos="0.8 1.0 555">
+            <joint type="free" />
+            <geom mesh="meshElektronik6" type="mesh" material="matElektronik6" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.684 0.760 0.337" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+        <body name="plastic21" pos="-0.8 2.0 560">
+            <joint type="free" />
+            <geom mesh="meshPlastic21" type="mesh" material="matPlastic21" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.220 0.672 0.113" rgba="0 0 0 0" contype="1" conaffinity="2" mass="0.5" friction="0.001 0.001 0.001" solref="0.02 2" solimp="0.99 0.999 0.002 0.5 2" />
+        </body>
+    </worldbody>
+</mujoco>
+

@@ -1,0 +1,318 @@
+﻿<mujoco model="main">
+    <compiler meshdir="mesh/" texturedir="texture/"/>
+    <!-- Naikkan batas kontak dan constraint -->
+    <size nconmax="2000" njmax="4000" nstack="4000000"/>
+
+    <!-- Buat solver lebih toleran terhadap banyak kontak -->
+    <option timestep="0.001"
+        iterations="200"
+        tolerance="1e-8"
+        integrator="implicit" viscosity="0.05"/>
+
+    <include file="testfile.xml"/>
+
+    <default>
+        <geom contype="1" conaffinity="1"
+              friction="0.8 0.3 0.1"
+              solref="0.04 1" solimp="0.95 0.99 0.001 0.5 2"
+              condim="3"/>
+    </default>
+    
+    <visual>
+        <rgba haze=".3 .3 .3 1"/>
+    </visual>
+
+    <asset>
+        <texture name="texplane" type="2d" builtin="checker"
+                 rgb1=".25 .25 .25" rgb2=".3 .3 .3"
+                 width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+        <material name="matplane" reflectance="0.3" texture="texplane"
+                  texrepeat="1 1" texuniform="true"/>
+        <mesh name="Slider" file="Slider.obj" scale=".08 .08 .08"/>
+        <mesh name="Rotary" file="Rotary.obj" scale="1 1 1"/>
+    </asset>
+
+    <worldbody>
+
+        <geom name="floor" pos="0 0 0" size="0 0 1" type="plane" material="matplane" contype="2" conaffinity="1"/>
+        <light directional="true" diffuse=".7 .7 .8" specular=".2 .2 .2"
+               pos="0 0 4" dir="0 0 -1"/>
+        <camera name="camera_dummy" mode="fixed" pos="0 0 20" euler="0 0 0" fovy="50"/>
+        <camera name="camera" mode="fixed" pos="-8 0 13" euler="0 -45 90" fovy="50"/>
+
+        <body name="Slider" pos="0 0 0">
+            <geom mesh="Slider" type="mesh" contype="0" conaffinity="0" rgba="0.5 0.5 0.5 1"/>
+            <geom name="wallLeft"     type="box" size="3 0.2 9"      pos="0 3.87 12"      rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="wallRight"    type="box" size="3 0.2 9"      pos="0 -3.87 12"     rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="wallBehind"   type="box" size="0.2 3.7 9"    pos="2.86 0 12"      rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="wallfront"    type="box" size="0.2 3.7 4"    pos="-2.86 0 16.5"   rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="sliderBottom"  type="box" size="0.2 3.7 3.6" pos="0.1 0 5.6"     euler="0 60 0"   rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <!-- sliderBottom1 dinonaktifkan: ujung atasnya menggantung di atas titik keluar sliderTop -> objek terjepit (wedge). Switchback asli hanya butuh sliderTop + sliderBottom. -->
+            <!-- <geom name="sliderBottom1" type="box" size="0.2 3.7 2.7" pos="-1.8 0 8"      euler="0 60 0"   rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/> -->
+            <geom name="sliderTop"     type="box" size="0.2 3.7 2.5" pos="-1.42 0 10.7"  euler="0 141 0"  rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="slider1"     type="box" size="0.2 3.7 2.5" pos="-4.3 0 23"  euler="0 141 0"  rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="slider2"     type="box" size="0.2 3.7 2.5" pos="4.3 0 23"  euler="0 -141 0"  rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="slider3"     type="box" size="3.7 0.2 2.5" pos="0 5.3 23"  euler="141 0 0"  rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+            <geom name="slider4"     type="box" size="3.7 0.2 2.5" pos="0 -5.3 23"  euler="-141 0 0"  rgba="1 0 0 0" contype="2" conaffinity="1" friction="0.001 0.001 0.001"/>
+        </body>
+
+        <body name="rotor" pos="1.4 0 9.5" euler="90 0 0">
+            <joint name="hinge_rotor" type="hinge" axis="0 0 1" armature="100" damping="20"/>
+            <geom type="cylinder" size="0.15 3.6" pos="0 0 0" rgba=".2 1 .2 1" contype="0" conaffinity="0"/>
+            <body name="blade1" pos="0 0 0" euler="0 0 0">
+                <geom type="box" size="0.05 0.6 3.6" pos="0 0.6 0" rgba=".2 1 .2 1"
+                      contype="0" conaffinity="0"/>
+            </body>
+            <body name="blade2" pos="0 0 0" euler="0 0 120">
+                <geom type="box" size="0.05 0.6 3.6" pos="0 0.6 0" rgba=".2 1 .2 1"
+                      contype="0" conaffinity="0"/>
+            </body>
+            <body name="blade3" pos="0 0 0" euler="0 0 240">
+                <geom type="box" size="0.05 0.6 3.6" pos="0 0.6 0" rgba=".2 1 .2 1"
+                      contype="0" conaffinity="0"/>
+            </body>
+        </body>
+
+        <body name="rejectBox" pos="-3.5 0 0">
+            <geom name="dindingBawahReject"    type="box" size="2 4 0.05"   pos="0 0 0.05"  rgba="1 0 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingBelakangReject" type="box" size="0.05 4 1.5" pos="2 0 1.5"   rgba="1 0 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingDepanReject"    type="box" size="0.05 4 1.5" pos="-2 0 1.5"  rgba="1 0 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingKiriReject"     type="box" size="2 0.05 1.5" pos="0 4 1.5"   rgba="1 0 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingKananReject"    type="box" size="2 0.05 1.5" pos="0 -4 1.5"  rgba="1 0 0 1" contype="2" conaffinity="1"/>
+        </body>
+
+        <body name="acceptBox" pos="-7.6 0 0">
+            <geom name="dindingBawahAccept"    type="box" size="2 4 0.05"   pos="0 0 0.05"  rgba="0 1 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingBelakangAccept" type="box" size="0.05 4 1.5" pos="2 0 1.5"   rgba="0 1 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingDepanAccept"    type="box" size="0.05 4 1.5" pos="-2 0 1.5"  rgba="0 1 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingKiriAccept"     type="box" size="2 0.05 1.5" pos="0 4 1.5"   rgba="0 1 0 1" contype="2" conaffinity="1"/>
+            <geom name="dindingKananAccept"    type="box" size="2 0.05 1.5" pos="0 -4 1.5"  rgba="0 1 0 1" contype="2" conaffinity="1"/>
+            <geom name="stopper1"              type="box" size="0.5 4 6" pos="-2 0 6"  rgba="0 1 0 0" contype="2" conaffinity="1" solref="0.005 1" solimp="0.99 0.999 0.0001"/>
+            <geom name="stopper2"              type="box" size="5 0.5 6" pos="1 4 6"   rgba="0 1 0 0" contype="2" conaffinity="1" solref="0.005 1" solimp="0.99 0.999 0.0001"/>
+            <geom name="stopper3"              type="box" size="5 0.5 6" pos="1 -4 6"  rgba="0 1 0 0" contype="2" conaffinity="1" solref="0.005 1" solimp="0.99 0.999 0.0001"/>
+            <geom name="stopper4"              type="box" size="5 5 0.5" pos="1 0 12"  rgba="0 1 0 0" contype="2" conaffinity="1" solref="0.005 1" solimp="0.99 0.999 0.0001"/>
+        </body>
+
+        <!-- Hard stop di ujung belakang (+X) valve saat retracted: x=0.139, jadi stopper di x=0.2 -->
+        <body name="selenoidValveStopper" pos="0.2 0 3.361" euler="0 0 0">
+            <geom name="svStopper" type="box" size="0.05 4.2 0.2" pos="0 0 0"
+                  rgba="1 1 0 0.5" contype="2" conaffinity="1"/>
+        </body>
+
+        <body name="valve1" pos="-1.562 -3.5000 2.611" euler="0 -60 0">
+            <joint name="jValve1" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom1" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve2" pos="-1.562 -3.2900 2.611" euler="0 -60 0">
+            <joint name="jValve2" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom2" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve3" pos="-1.562 -3.0800 2.611" euler="0 -60 0">
+            <joint name="jValve3" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom3" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve4" pos="-1.562 -2.8700 2.611" euler="0 -60 0">
+            <joint name="jValve4" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom4" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve5" pos="-1.562 -2.6600 2.611" euler="0 -60 0">
+            <joint name="jValve5" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom5" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve6" pos="-1.562 -2.4500 2.611" euler="0 -60 0">
+            <joint name="jValve6" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom6" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve7" pos="-1.562 -2.2400 2.611" euler="0 -60 0">
+            <joint name="jValve7" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom7" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve8" pos="-1.562 -2.0300 2.611" euler="0 -60 0">
+            <joint name="jValve8" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom8" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve9" pos="-1.562 -1.8200 2.611" euler="0 -60 0">
+            <joint name="jValve9" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom9" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve10" pos="-1.562 -1.6100 2.611" euler="0 -60 0">
+            <joint name="jValve10" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom10" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve11" pos="-1.562 -1.4000 2.611" euler="0 -60 0">
+            <joint name="jValve11" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom11" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve12" pos="-1.562 -1.1900 2.611" euler="0 -60 0">
+            <joint name="jValve12" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom12" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve13" pos="-1.562 -0.9800 2.611" euler="0 -60 0">
+            <joint name="jValve13" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom13" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve14" pos="-1.562 -0.7700 2.611" euler="0 -60 0">
+            <joint name="jValve14" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom14" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve15" pos="-1.562 -0.5600 2.611" euler="0 -60 0">
+            <joint name="jValve15" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom15" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve16" pos="-1.562 -0.3500 2.611" euler="0 -60 0">
+            <joint name="jValve16" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom16" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve17" pos="-1.562 -0.1400 2.611" euler="0 -60 0">
+            <joint name="jValve17" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom17" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve18" pos="-1.562 0.0700 2.611" euler="0 -60 0">
+            <joint name="jValve18" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom18" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve19" pos="-1.562 0.2800 2.611" euler="0 -60 0">
+            <joint name="jValve19" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom19" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve20" pos="-1.562 0.4900 2.611" euler="0 -60 0">
+            <joint name="jValve20" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom20" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve21" pos="-1.562 0.7000 2.611" euler="0 -60 0">
+            <joint name="jValve21" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom21" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve22" pos="-1.562 0.9100 2.611" euler="0 -60 0">
+            <joint name="jValve22" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom22" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve23" pos="-1.562 1.1200 2.611" euler="0 -60 0">
+            <joint name="jValve23" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom23" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve24" pos="-1.562 1.3300 2.611" euler="0 -60 0">
+            <joint name="jValve24" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom24" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve25" pos="-1.562 1.5400 2.611" euler="0 -60 0">
+            <joint name="jValve25" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom25" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve26" pos="-1.562 1.7500 2.611" euler="0 -60 0">
+            <joint name="jValve26" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom26" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve27" pos="-1.562 1.9600 2.611" euler="0 -60 0">
+            <joint name="jValve27" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom27" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve28" pos="-1.562 2.1700 2.611" euler="0 -60 0">
+            <joint name="jValve28" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom28" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve29" pos="-1.562 2.3800 2.611" euler="0 -60 0">
+            <joint name="jValve29" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom29" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve30" pos="-1.562 2.5900 2.611" euler="0 -60 0">
+            <joint name="jValve30" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom30" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve31" pos="-1.562 2.8000 2.611" euler="0 -60 0">
+            <joint name="jValve31" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom31" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve32" pos="-1.562 3.0100 2.611" euler="0 -60 0">
+            <joint name="jValve32" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom32" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve33" pos="-1.562 3.2200 2.611" euler="0 -60 0">
+            <joint name="jValve33" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom33" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve34" pos="-1.562 3.4300 2.611" euler="0 -60 0">
+            <joint name="jValve34" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom34" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 1 0 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+        <body name="valve35" pos="-1.562 3.6400 2.611" euler="0 -60 0">
+            <joint name="jValve35" type="slide" axis="0 0 1" range="0 3.5" damping="25" solreflimit="0.02 1.0" solimplimit="0.9 0.99 0.001"/>
+            <geom name="valveGeom35" type="box" size=".1 .1 1.5" pos="0 0 0" rgba="0 0 1 1" contype="1" conaffinity="1" density="2" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        </body>
+
+    </worldbody>
+
+    <actuator>
+        <velocity name="rotaryVel" joint="hinge_rotor" kv="2000" ctrlrange="0 10" forcerange="-60 60"/>
+        <position name="actuatorValve1" joint="jValve1" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve2" joint="jValve2" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve3" joint="jValve3" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve4" joint="jValve4" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve5" joint="jValve5" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve6" joint="jValve6" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve7" joint="jValve7" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve8" joint="jValve8" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve9" joint="jValve9" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve10" joint="jValve10" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve11" joint="jValve11" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve12" joint="jValve12" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve13" joint="jValve13" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve14" joint="jValve14" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve15" joint="jValve15" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve16" joint="jValve16" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve17" joint="jValve17" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve18" joint="jValve18" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve19" joint="jValve19" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve20" joint="jValve20" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve21" joint="jValve21" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve22" joint="jValve22" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve23" joint="jValve23" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve24" joint="jValve24" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve25" joint="jValve25" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve26" joint="jValve26" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve27" joint="jValve27" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve28" joint="jValve28" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve29" joint="jValve29" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve30" joint="jValve30" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve31" joint="jValve31" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve32" joint="jValve32" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve33" joint="jValve33" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve34" joint="jValve34" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+        <position name="actuatorValve35" joint="jValve35" kp="6000" ctrlrange="0 3.5" forcerange="-4400 4400"/>
+    </actuator>
+
+</mujoco>
