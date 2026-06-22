@@ -1,0 +1,41 @@
+# Dependencies for the Improved Faster R-CNN re-implementation
+# (Wang et al., "Automatic Detection and Classification of Steel Surface
+#  Defect Using Deep CNNs", Metals 2021).
+#
+# --- PyTorch: install FIRST, from the wheel index matching your hardware ---
+#   GPU (NVIDIA, e.g. RTX 4080 Super, CUDA 12.8):
+#     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+#   CPU only:
+#     pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#
+# Then the remaining (plain PyPI) dependencies:
+#   pip install -r requirements.txt
+
+# Core deep-learning framework (install from a hardware-specific index, see above).
+torch
+torchvision
+
+# Numerical / image I/O helpers used by the dataset, letterbox and inference.
+numpy
+Pillow
+
+# Training progress bars in the terminal.
+tqdm
+
+# Training curves (loss / accuracy / RMSE / mAP / P-R-F1 / LR) -> PNG.
+matplotlib
+
+# Validation metrics: COCO-style mAP (torchmetrics) used every epoch.
+torchmetrics
+
+# ONNX export of the best checkpoint (export_onnx.py) + verification.
+# DCNv2 is decomposed to grid_sample (standard ops) so NO special deform-conv
+# ONNX package is needed; onnxruntime runs the exported graph as-is.
+onnx
+onnxruntime
+
+# COCO-format dataset eval helper. OPTIONAL: only needed for the COCO-style
+# dataset stub. On Windows it needs the MSVC build tools; the CVAT dataset and
+# all training/metrics run fine without it.
+#   pip install pycocotools
+pycocotools
